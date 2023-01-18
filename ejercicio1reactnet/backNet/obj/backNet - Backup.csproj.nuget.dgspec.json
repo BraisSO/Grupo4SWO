@@ -1,15 +1,15 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\marcos.martinez\\Documents\\Grupo4SWO\\ejercicio1ReactNet\\backNet\\backNet.csproj": {}
+    "C:\\Users\\marcos.martinez\\Documents\\Grupo4SWO\\ejercicio1ReactNet\\backNet\\backNet - Backup.csproj": {}
   },
   "projects": {
-    "C:\\Users\\marcos.martinez\\Documents\\Grupo4SWO\\ejercicio1ReactNet\\backNet\\backNet.csproj": {
+    "C:\\Users\\marcos.martinez\\Documents\\Grupo4SWO\\ejercicio1ReactNet\\backNet\\backNet - Backup.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\marcos.martinez\\Documents\\Grupo4SWO\\ejercicio1ReactNet\\backNet\\backNet.csproj",
-        "projectName": "backNet",
-        "projectPath": "C:\\Users\\marcos.martinez\\Documents\\Grupo4SWO\\ejercicio1ReactNet\\backNet\\backNet.csproj",
+        "projectUniqueName": "C:\\Users\\marcos.martinez\\Documents\\Grupo4SWO\\ejercicio1ReactNet\\backNet\\backNet - Backup.csproj",
+        "projectName": "backNet - Backup",
+        "projectPath": "C:\\Users\\marcos.martinez\\Documents\\Grupo4SWO\\ejercicio1ReactNet\\backNet\\backNet - Backup.csproj",
         "packagesPath": "C:\\Users\\marcos.martinez\\.nuget\\packages\\",
         "outputPath": "C:\\Users\\marcos.martinez\\Documents\\Grupo4SWO\\ejercicio1ReactNet\\backNet\\obj\\",
         "projectStyle": "PackageReference",
@@ -39,6 +39,12 @@
       "frameworks": {
         "net6.0": {
           "targetAlias": "net6.0",
+          "dependencies": {
+            "Swashbuckle.AspNetCore": {
+              "target": "Package",
+              "version": "[6.2.3, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
