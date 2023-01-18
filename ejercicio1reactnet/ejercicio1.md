@@ -12,3 +12,9 @@ Enviar la url del proyecto en github
 **Back** -> Marcos
 
 **Front** -> Brais
+
+# Nombres y datos relevantes del Back
+
+1. La base de datos que crea en el servidor local se llama grupo4swo
+2. La ruta para obtener una lista de clientes es: .../cliente/lista-clientes
+2. La ruta para guardar clientes es: .../cliente/guardar
