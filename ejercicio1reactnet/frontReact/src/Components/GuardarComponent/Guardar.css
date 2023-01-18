@@ -1,0 +1,11 @@
+.globalGuardar{
+    background-color: lightcoral;
+    padding: 10px;
+    padding-bottom: 40px;
+    text-align: center;
+    margin-top: 100px
+}
+
+::placeholder{
+    text-align: center;
+}
