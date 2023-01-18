@@ -10,9 +10,9 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddDbContext<DbGrupo4SwoContext>(options =>
+builder.Services.AddDbContext<DbClienteContext>(options =>
 {
-    options.UseSqlServer(builder.Configuration.GetConnectionString("DbCliente"));
+    options.UseSqlServer(builder.Configuration.GetConnectionString("ClienteDB"));
 });
 
 builder.Services.AddCors(options =>
@@ -25,6 +25,7 @@ builder.Services.AddCors(options =>
 
 var app = builder.Build();
 
+app.UseCors("My_Policy");
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
