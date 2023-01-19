@@ -13,7 +13,7 @@ function handleSubmit(e){
     axios.post('https://localhost:7015/cliente/guardar', clientes)
     .then(res => {
         console.log(res.data.nombre);
-        console.log(res.data.correo);
+        console.log(res.data.email);
     });
 }
 
@@ -30,10 +30,10 @@ function handleSubmit(e){
             ></input>
             <input 
                 type="text" 
-                name="correo"
-                placeholder='correo'
-                value={clientes.correo}
-                onChange={e => setClientes({ ...clientes,correo: e.target.value })}>  
+                name="email"
+                placeholder='email'
+                value={clientes.email}
+                onChange={e => setClientes({ ...clientes,email: e.target.value })}>  
             </input>
             {/*Hai que usar el spread operator, porque sino el objeto se 
                 sobreescribe entero pasando uno de los campos a ser undefined*/}

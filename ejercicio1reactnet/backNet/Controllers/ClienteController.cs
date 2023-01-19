@@ -21,7 +21,7 @@ namespace backNet.Controllers
         }
 
         [HttpPost("guardar")]
-        public async Task<ActionResult> NuevoCliente(Cliente cliente)
+        public async Task<ActionResult> NuevoCliente([FromBody] Cliente cliente)
         {
             this.Context.Add(cliente);
             await Context.SaveChangesAsync();
