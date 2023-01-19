@@ -6,7 +6,7 @@ export default function List() {
     const [clientes, setClientes] = useState([])
 
     useEffect(() => {
-        axios.get("https://jsonplaceholder.typicode.com/users")
+        axios.get("https://localhost:7015/cliente/lista-clientes")
             .then(res => setClientes(res.data))
             .catch(error => console.log(error))
     }, [])
@@ -28,7 +28,7 @@ export default function List() {
                                 return (
 
                                     <tr key={i}>
-                                        <td>{cliente.name}</td>
+                                        <td>{cliente.nombre}</td>
                                         <td>{cliente.email}</td>
                                     </tr>
 

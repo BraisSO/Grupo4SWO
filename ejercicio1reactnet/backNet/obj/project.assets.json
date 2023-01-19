@@ -3936,19 +3936,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\marcos.martinez\\.nuget\\packages\\": {}
+    "C:\\Users\\brais.suarez\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\marcos.martinez\\Documents\\Grupo4SWO\\ejercicio1ReactNet\\backNet\\backNet.csproj",
+      "projectUniqueName": "C:\\Projects\\Grupo4SWO\\Ejercicio1ReactNet\\backNet\\backNet.csproj",
       "projectName": "backNet",
-      "projectPath": "C:\\Users\\marcos.martinez\\Documents\\Grupo4SWO\\ejercicio1ReactNet\\backNet\\backNet.csproj",
-      "packagesPath": "C:\\Users\\marcos.martinez\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\marcos.martinez\\Documents\\Grupo4SWO\\ejercicio1ReactNet\\backNet\\obj\\",
+      "projectPath": "C:\\Projects\\Grupo4SWO\\Ejercicio1ReactNet\\backNet\\backNet.csproj",
+      "packagesPath": "C:\\Users\\brais.suarez\\.nuget\\packages\\",
+      "outputPath": "C:\\Projects\\Grupo4SWO\\Ejercicio1ReactNet\\backNet\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\marcos.martinez\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\brais.suarez\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [

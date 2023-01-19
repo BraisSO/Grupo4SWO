@@ -25,7 +25,7 @@ namespace backNet.Controllers
         {
             this.Context.Add(cliente);
             await Context.SaveChangesAsync();
-            return Ok();
+            return Ok(cliente);
         }
     }
 }

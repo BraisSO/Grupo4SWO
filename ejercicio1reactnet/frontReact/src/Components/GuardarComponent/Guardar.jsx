@@ -10,7 +10,7 @@ correo: ''
 
 function handleSubmit(e){
     e.preventDefault();
-    axios.post('https://jsonplaceholder.typicode.com/posts', clientes)
+    axios.post('https://localhost:7015/cliente/guardar', clientes)
     .then(res => {
         console.log(res.data.nombre);
         console.log(res.data.correo);
@@ -33,9 +33,10 @@ function handleSubmit(e){
                 name="correo"
                 placeholder='correo'
                 value={clientes.correo}
-                onChange={e => setClientes({ ...clientes,correo: e.target.value })}>  {/*Hai que usar el spread operator, porque sino el objeto se 
-                sobreescribe entero pasando uno de los campos a ser undefined*/}
+                onChange={e => setClientes({ ...clientes,correo: e.target.value })}>  
             </input>
+            {/*Hai que usar el spread operator, porque sino el objeto se 
+                sobreescribe entero pasando uno de los campos a ser undefined*/}
                 <button type="submit">Submit</button>
             </form>
             </div>
