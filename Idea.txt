@@ -1,0 +1,35 @@
+Api musica:
+	-integracion con la api de spotify
+	-integracion de un buscador que haga las peticiones una vez
+	se encuentra una de las canciones y se pulsa enviar
+
+Usuario hace una peticion a la API desde el front, esta devuelve los datos
+y a traves de otra API guarda en base de datos los datos recuperados
+sobre la cancion o artista haciendo así una lista de canciones / artistas
+favoritos y sus detalles.
+
+https://rapidapi.com/theaudiodb/api/theaudiodb/
+
+------------------------------
+
+-Api estilo myanimelist-> lo mismo pero con animes
+
+https://medium.com/nerd-for-tech/how-to-fetch-data-from-the-anilist-api-graphql-using-axios-77527efc8a89
+Ejemplo de como usar la api
+
+
+------------------------------
+
+Aplicacion de gastos con gráficas -> ReactCharts con la información que 
+le vayas pasando.
+
+-Desplegable con el tipo de gasto, input de texto con el nombre del gasto, etc.
+
+------------------------------
+
+APIS:
+Anime: https://github.com/AniList/ApiV2-GraphQL-Docs/blob/master/README.md
+UserGenerator: https://randomuser.me/
+CatFacts: https://github.com/alexwohlbruck/cat-facts
+ApiMusica: https://rapidapi.com/theaudiodb/api/theaudiodb/
+
