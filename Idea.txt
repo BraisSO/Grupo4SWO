@@ -1,4 +1,4 @@
-Api musica:
+Aplicación musica:
 	-integracion con la api de spotify
 	-integracion de un buscador que haga las peticiones una vez
 	se encuentra una de las canciones y se pulsa enviar
@@ -12,7 +12,7 @@ https://rapidapi.com/theaudiodb/api/theaudiodb/
 
 ------------------------------
 
--Api estilo myanimelist-> lo mismo pero con animes
+-Aplicación estilo myanimelist-> lo mismo pero con animes
 
 https://medium.com/nerd-for-tech/how-to-fetch-data-from-the-anilist-api-graphql-using-axios-77527efc8a89
 Ejemplo de como usar la api
@@ -24,6 +24,23 @@ Aplicacion de gastos con gráficas -> ReactCharts con la información que
 le vayas pasando.
 
 -Desplegable con el tipo de gasto, input de texto con el nombre del gasto, etc.
+
+------------------------------
+
+-Aplicación de préstamos de libros entre particulares
+	-Cada usuario tendrá asociado los libros que tenga disponibles para prestar así como si se encuentran o no disponibles.
+	-Cada usuario podrá pedir prestado un número limitado de libros simultaneamente.
+	-Se podrá buscar libros por título, autor, año, prestamista de este o género literario/temática.
+
+------------------------------
+
+-Aplicación de lista de la compra compartida entre personas.
+	-Cada lista de la compra tendrá asociado al menos a un usuario.
+	-Cada usuario podrá añadir o eliminar artículos de la lista.
+	-Un usuario puede crear, obtener, modificar y eliminar listas de la compra y añadir usuarios que colaborarán en la compra de esta.
+	-Cada usuario podrá marcar como reservados ciertos productos de la lista para indicar que será quien se encargue de comprarlos.
+	-Cada artículo de la lista debe tener un identificador, un nombre del producto. Opcionalmente puede añadirse la marca y el precio del producto.
+	(Esta aplicación puede ir orientada a compañeros de piso, familias, preparación de eventos y listas de bodas).
 
 ------------------------------
 
