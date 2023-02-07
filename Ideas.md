@@ -20,10 +20,21 @@ Ejemplo de como usar la api
 
 ------------------------------
 
+# Idea Final
+
 Aplicacion de gastos con gráficas -> ReactCharts con la información que 
 le vayas pasando.
 
 -Desplegable con el tipo de gasto, input de texto con el nombre del gasto, etc.
+-Mostrar gastos en tabla + graficas.
+-Conversiones de monedas usando api externa.
+
+https://github.com/fawazahmed0/currency-api#readme -> **Api de conversiones**
+
+**Librerías de gráficas**
+https://react-charts.tanstack.com/
+https://www.chartjs.org/
+
 
 ------------------------------
 
