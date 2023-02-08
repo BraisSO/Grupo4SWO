@@ -58,7 +58,7 @@ https://rapidapi.com/theaudiodb/api/theaudiodb/
 Ejemplo de como usar la api
 
 
-## Idea Final
+## Idea Final - MoneyMate
 
 
 #### Aplicacion de gastos con gráficas -> ReactCharts con la información que 
