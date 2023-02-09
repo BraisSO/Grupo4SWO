@@ -1,0 +1,39 @@
+﻿KeyNamesDB:
+Conexion -> DefaultConnection
+DB -> MoneyMate
+Tabla -> Expends
+Campos de la tabla: 
+	ID
+	Expend
+	Type
+	Comment
+
+	------
+
+KeyNamesEndpoints:
+	Global: /moneymate/...
+
+		Listar Todo: /listAll
+		Guardar:[FromBody] /save
+		Eliminar: /delete/{}
+		EliminarTodo: /deleteAll
+
+		ListarPersonalizado: /list/[TipoGasto] -> se pasa desde el front
+
+	------
+
+	En la carpeta Inerfaces de Domain se plantean las interfaces que luego se desarrollan en el propio Domain.
+	Es decir, se crea una interfaz con un método sin contenido y luego en el domain se llama a esa interfaz y se desarrolla.
+
+	------
+
+	Ya está aplicada la politica de CORS.
+
+	------
+
+	Instanciar y probar si el mapper funciona en el controlador -> Tengo los pasos a seguir apuntados en un txt 
+	(si necesitas más info pidemelos)
+
+
+	
+

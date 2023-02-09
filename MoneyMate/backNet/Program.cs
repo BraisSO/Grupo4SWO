@@ -1,4 +1,8 @@
+using backNet.Config;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
+
 
 // Add services to the container.
 
@@ -7,7 +11,26 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+builder.Services.AddDbContext<DBApiContext>(options =>
+{
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
+});
+
 var app = builder.Build();
+
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("MiPolitica", app =>
+    {
+        app.AllowAnyOrigin();
+        app.AllowAnyHeader();
+        app.AllowAnyMethod();
+    });
+});
+
+builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+
+app.UseCors("MiPolitica");
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
