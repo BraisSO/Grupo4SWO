@@ -1,0 +1,78 @@
+<div>
+    <app-nav></app-nav>
+    <div class="container">
+        <h1 class="text-center">MoneyMate</h1>
+        <form>
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label for="type">Type:</label>
+                        <select class="form-select" id="type" name="type">
+                            <option value="food">Food</option>
+                            <option value="clothing">Clothing</option>
+                            <option value="housing">Housing</option>
+                            <option value="transportation">Transportation</option>
+                            <option value="entertainment">Entertainment</option>
+                            <option value="others">Others</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label for="amount">Amount:</label>
+                        <input class="form-control" type="number" id="amount" name="amount" step="0.01" min="0"
+                            placeholder="0.00">
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label for="date">Date:</label>
+                        <input class="form-control" type="date" id="date" name="date">
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label for="save-btn">&nbsp;</label>
+                        <button class="btn btn-primary form-control" type="button" id="save-btn">Save</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+        <h2>Expenses</h2>
+        <table class="table">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Type</th>
+                    <th>Amount</th>
+                    <th>Date</th>
+                </tr>
+            </thead>
+            <tbody id="expense-list"></tbody>
+        </table>
+        <h2>Filter</h2>
+        <form>
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label for="type-filter">Type:</label>
+                        <select class="form-select" id="type-filter" name="type-filter">
+                            <option value="all">All</option>
+                            <option value="food">Food</option>
+                            <option value="clothing">Clothing</option>
+                            <option value="housing">Housing</option>
+                            <option value="transportation">Transportation</option>
+                            <option value="entertainment">Entertainment</option>
+                            <option value="others">Others</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label for="filter-btn">&nbsp;</label>
+                        <button class="btn btn-primary form-control" type="button" id="filter-btn">Filter</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

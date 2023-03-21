@@ -1,0 +1,16 @@
+<div>
+<app-nav></app-nav>
+<h3>{{extCurrencies.date}}</h3>
+<table>
+    <tr>
+        <th>Currency Abbreviation</th>
+        <th>Currency Name</th>
+        <th>Eur Value</th>
+    </tr>
+    <tr *ngFor="let key of keys">
+        <td>{{key}}</td>
+        <td>{{extCurrenciesNames[key]}}</td>
+        <td>{{extCurrencies.eur[key]}}</td>
+    </tr>
+</table>
+</div>

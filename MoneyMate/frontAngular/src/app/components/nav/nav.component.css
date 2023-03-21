@@ -1,0 +1,19 @@
+nav {
+    margin-left: 8%;
+    margin-top: 1.5%;
+    width: 35%;
+    padding-left: 7px;
+    margin-bottom: 2%;
+    background-color: rgb(156, 155, 155);
+}
+
+ul,
+li {
+    border-left: 1px solid white;
+    text-align: center;
+
+}
+
+a {
+    color: whitesmoke;
+}

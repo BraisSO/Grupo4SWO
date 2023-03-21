@@ -1,0 +1,29 @@
+		h1 {
+			font-family: 'Helvetica Neue', sans-serif;
+			font-weight: bold;
+			font-size: 48px;
+			color: #2c3e50;
+			margin-top: 50px;
+			margin-bottom: 30px;
+			text-align: center;
+			letter-spacing: 2px;
+			margin-bottom: 80px;
+		}
+		div.container {
+			background-color: bisque;
+			padding: 20px;
+			min-width: 80%;
+			padding-right: 10%;
+			padding-left: 10%;
+		}
+		tr{
+			background-color: rgb(53, 48, 48);
+			color: white;
+		}
+
+		form {
+			margin-bottom: 30px;
+		}
+		table {
+			margin-bottom: 30px;
+		}
