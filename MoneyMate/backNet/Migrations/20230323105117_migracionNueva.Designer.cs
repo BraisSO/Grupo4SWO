@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using backNet.Config;
 
@@ -10,9 +11,11 @@ using backNet.Config;
 namespace backNet.Migrations
 {
     [DbContext(typeof(DBApiContext))]
-    partial class DBApiContextModelSnapshot : ModelSnapshot
+    [Migration("20230323105117_migracionNueva")]
+    partial class migracionNueva
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
