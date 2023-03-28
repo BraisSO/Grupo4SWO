@@ -25,5 +25,12 @@ namespace backNet.Repositories
             _context.Expends.Add(expend);
             await  _context.SaveChangesAsync();
         }
+
+
+        public async Task DeleteExpend()
+        {
+            _context.Expends.ExecuteDelete();
+            await _context.SaveChangesAsync();
+        }
     }
 }

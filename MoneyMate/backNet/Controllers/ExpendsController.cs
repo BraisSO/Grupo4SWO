@@ -44,6 +44,14 @@ namespace backNet.Controllers
            
         }
 
+        [HttpDelete("clearExpends")] //Endpoint-> https://localhost:7023/api/clearExpends
+        public async Task ClearExpends()
+        {
+            await _expendsRepository.DeleteExpend();
+
+
+        }
+
 
 
     }

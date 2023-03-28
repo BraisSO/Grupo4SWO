@@ -12,7 +12,8 @@ import { NavComponent } from './components/nav/nav.component';
 
 const rutas: Routes = [
   { path: '', component: HomeComponent },
-  { path:'ext-currencies', component: ExtCurrenciesComponent }
+  { path:'ext-currencies', component: ExtCurrenciesComponent },
+
 ]
 
 @NgModule({

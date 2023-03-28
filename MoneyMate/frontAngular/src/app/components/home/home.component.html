@@ -2,12 +2,12 @@
     <app-nav></app-nav>
     <div class="container">
         <h1 class="text-center">MoneyMate</h1>
-        <form>
+        <form (ngSubmit)="postOwnExpenses()">
             <div class="row">
                 <div class="col-md-3">
                     <div class="form-group">
                         <label for="type">Type:</label>
-                        <select class="form-select" id="type" name="type">
+                        <select class="form-select" id="type" name="type" [(ngModel)]="expense.type">
                             <option value="food">Food</option>
                             <option value="clothing">Clothing</option>
                             <option value="housing">Housing</option>
@@ -20,20 +20,20 @@
                 <div class="col-md-3">
                     <div class="form-group">
                         <label for="amount">Amount:</label>
-                        <input class="form-control" type="number" id="amount" name="amount" step="0.01" min="0"
-                            placeholder="0.00">
+                        <input class="form-control" type="number" id="amount" name="amount" step="10" min="0"
+                            placeholder="0" [(ngModel)]="expense.amount">
                     </div>
                 </div>
                 <div class="col-md-3">
                     <div class="form-group">
                         <label for="date">Date:</label>
-                        <input class="form-control" type="date" id="date" name="date">
+                        <input class="form-control" type="date" id="date" name="date" [(ngModel)]="expense.date">
                     </div>
                 </div>
                 <div class="col-md-3">
                     <div class="form-group">
                         <label for="save-btn">&nbsp;</label>
-                        <button class="btn btn-primary form-control" type="button" id="save-btn">Save</button>
+                        <button class="btn btn-primary form-control" type="submit" id="save-btn">Save</button>
                     </div>
                 </div>
             </div>
@@ -46,29 +46,22 @@
                     <th>Amount</th>
                     <th>Date</th>
                 </tr>
-                <tr>
-                    <td>Food</td>
-                    <td>300€</td>
-                    <td>22/02/2023</td>
-                </tr>
-                <tr>
-                    <td>Clothing</td>
-                    <td>100€</td>
-                    <td>25/02/2023</td>
-                </tr>
-                <tr>
-                    <td>Transportation</td>
-                    <td>15€</td>
-                    <td>27/02/2023</td>
-                </tr>
-                <tr>
-                    <td>Entertainment</td>
-                    <td>69.99€</td>
-                    <td>30/02/2023</td>
-                </tr>
+
             </thead>
-            <tbody id="expense-list"></tbody>
+            <tbody id="expense-list">
+                <tr *ngFor="let expense of expensesList; let i=index">
+                    <td>{{expense.type}}</td>
+                    <td>{{expense.amount}}</td>
+                    <td>{{expense.date}}</td>
+                </tr>
+            </tbody>
         </table>
+        <div class="d-flex flex-row-reverse">
+            <div class="form-group">
+                <label for="delete-btn">&nbsp;</label>
+                <button (click)="clearOwnExpenses()" class="btn btn-danger mb-3" type="button">Clear Expends</button>
+            </div>
+        </div>
         <h2>Filter</h2>
         <form>
             <div class="row">

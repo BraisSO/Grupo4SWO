@@ -7,5 +7,7 @@ namespace backNet.Repositories.Interfaces
     {
          Task<List<Expends>> GetExpends();
          Task PostExpend(Expends expend);
+
+         Task DeleteExpend();
     }
 }
