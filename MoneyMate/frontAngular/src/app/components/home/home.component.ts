@@ -15,9 +15,6 @@ export class HomeComponent implements OnInit {
   constructor(private ownExpensesService:ownExpensesService, private router:Router) { }
 
   ngOnInit(): void {
-    let nombre="pepe";
-    console.log(nombre);
-    
     this.getOwnExpenses();
     console.log(this.expense)
   }
