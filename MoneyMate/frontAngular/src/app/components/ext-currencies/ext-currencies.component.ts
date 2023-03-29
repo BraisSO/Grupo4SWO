@@ -29,7 +29,6 @@ export class ExtCurrenciesComponent implements OnInit {
     this.extCurrencyService.getExtCurrencies().subscribe(res=>{
       console.log(res);
       this.extCurrencies=res;
-
       let i:number=0;
       for (const key in this.extCurrencies.eur) {
         this.keys[i]=key;
