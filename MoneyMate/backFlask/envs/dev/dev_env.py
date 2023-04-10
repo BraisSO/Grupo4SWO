@@ -5,7 +5,7 @@ load_dotenv()
 
 
 class DevConfig:
-    DEBUG: os.getenv('DEBUG_MODE')
+    DEBUG= os.getenv('DEBUG_MODE')
 
 
 config = {

@@ -32,4 +32,4 @@ app.register_blueprint(types_expenses_routes)
 
 if __name__ == "__main__":
     app.config.from_object(config["dev"])
-    app.run(debug=True) # Hay algún problema con la configuración del modo debug por eso pongo debug=True en esta linea
+    app.run()
