@@ -44,7 +44,7 @@ def save_new_expense_repo(expense):
 
 def remove_expense_repo(id):
     expense_to_remove = Expense.query.get(id)
-    db.session.remove(expense_to_remove)
+    db.session.delete(expense_to_remove)
     db.session.commit()
     return expense_to_remove
 

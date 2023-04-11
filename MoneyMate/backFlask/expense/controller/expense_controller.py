@@ -28,7 +28,7 @@ def post_new_expense():
     type_expense_id = request.json["typeExpenseId"]
     expense_to_save = Expense(None, name, type_expense_id, amount, date)
     saved_expense = save_new_expense_repo(expense_to_save)
-    return ExpenseSchema.jsonify(saved_expense)
+    return expenseSchema.jsonify(saved_expense)
 
 def delete_expense(id):
     expense_deleted = remove_expense_repo(id)
@@ -40,5 +40,5 @@ def update_expense(id):
     date = request.json["date"]
     type_expense_id = request.json["typeExpenseId"]
     expense_to_update = Expense(id, name, type_expense_id, amount, date)
-    updated_expense = modify_expense_repo(expense_to_update)
-    return ExpenseSchema.jsonify(updated_expense)
+    updated_expense = modify_expense_repo(id, expense_to_update)
+    return expenseSchema.jsonify(updated_expense)
