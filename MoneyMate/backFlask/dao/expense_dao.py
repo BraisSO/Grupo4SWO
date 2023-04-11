@@ -6,7 +6,7 @@ class Expense(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(70), nullable=False)
     type_expense_id = db.Column(db.Integer, db.ForeignKey(TypeExpense.id))
-    type_expense = db.Relationship("tipes_expenses", backref="expenses")
+    type_expense = db.Relationship("TypeExpense", backref=db.backref('type_expense'))
     amount = db.Column(db.Float, nullable=False)
     date = db.Column(db.DateTime)
 
@@ -15,7 +15,7 @@ class Expense(db.Model):
         self.id = id
         self.name = name
         self.amount = amount
-        self.date = datetime.strptime(dateString, '%y/%m/%d %H:%M:%S') # Aquí estoy suponiendo que el input de tipo date del archivo home.component.html en el front devuelve un tipo date con este formato parseado a string
+        self.date = datetime.strptime(dateString, '%Y/%m/%d %H:%M:%S') # Aquí estoy suponiendo que el input de tipo date del archivo home.component.html en el front devuelve un tipo date con este formato parseado a string
         self.type_expense_id = type_expense_id
 
     #  type:string="";

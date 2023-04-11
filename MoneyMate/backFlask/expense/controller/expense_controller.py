@@ -1,5 +1,5 @@
 from repo.expense_repo import *
-from dao_schema.expense_schema import *
+from dao_schema.expense_schema import ExpenseSchema
 from flask import request, jsonify
 
 expenseSchema = ExpenseSchema()
@@ -25,7 +25,7 @@ def post_new_expense():
     name = request.json["name"]
     amount = request.json["amount"]
     date = request.json["date"]
-    type_expense_id = request.json["type_expense_id"]
+    type_expense_id = request.json["typeExpenseId"]
     expense_to_save = Expense(None, name, type_expense_id, amount, date)
     saved_expense = save_new_expense_repo(expense_to_save)
     return ExpenseSchema.jsonify(saved_expense)
@@ -38,7 +38,7 @@ def update_expense(id):
     name = request.json["name"]
     amount = request.json["amount"]
     date = request.json["date"]
-    type_expense_id = request.json["type_expense_id"]
+    type_expense_id = request.json["typeExpenseId"]
     expense_to_update = Expense(id, name, type_expense_id, amount, date)
     updated_expense = modify_expense_repo(expense_to_update)
-    return ExpenseSchema.jsonify(update_expense)
+    return ExpenseSchema.jsonify(updated_expense)
