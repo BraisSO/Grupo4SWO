@@ -1,8 +1,13 @@
 from flask import Flask
+from flask_jwt_extended import JWTManager
+from dao.type_expense_dao import TypeExpense
+from dao.expense_dao import Expense
+from dao.user_dao import User
 from envs.dev.dev_env import config, get_database_config
 from database.db import init_app
 from expense.routes.expense_route import expenses_routes
 from type_expense.routes.type_expense_route import types_expenses_routes
+from user.route.user_route import users_routes
 from flask_cors import CORS
 
 # Configurar el archivo app.py como el archivo principal de la aplicación
@@ -11,6 +16,10 @@ app  = Flask(__name__)
 # Configurar Cors (Enlace cruzado de datos)
 app.config['JSON_AS_ASCII'] = False
 CORS(app)
+
+# Configurar con que clave se firma el token jwt
+app.config['JWT_SECRET_KEY'] = get_database_config().get('SECRET_KEY')
+jwt = JWTManager(app)
 
 # Configuración de los parámetros para la conexión con la base de datos
 host = get_database_config().get('MYSQL_HOST')
@@ -25,7 +34,7 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = sql_track_modifications # Esta co
 # Creación en la base de datos en caso de ser necesario
 init_app(app)
 
-
+app.register_blueprint(users_routes)
 app.register_blueprint(expenses_routes)
 app.register_blueprint(types_expenses_routes)
 

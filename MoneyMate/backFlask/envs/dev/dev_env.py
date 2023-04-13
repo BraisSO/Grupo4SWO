@@ -18,6 +18,7 @@ def get_database_config():
         'MYSQL_USER': os.getenv('MYSQL_USER'),
         'MYSQL_PASSWORD': os.getenv('MYSQL_PASSWORD'),
         'DATABASE_NAME': os.getenv('DATABASE_NAME'),
-        'SQLALCHEMY_TRACK_MODIFICATIONS': os.getenv('SQLALCHEMY_TRACK_MODIFICATIONS')
+        'SQLALCHEMY_TRACK_MODIFICATIONS': os.getenv('SQLALCHEMY_TRACK_MODIFICATIONS'),
+        'SECRET_KEY': os.getenv('SECRET_KEY')
     }
     return database_config
