@@ -12,21 +12,22 @@ export class ownExpensesService {
   // URL:string="https://localhost:7023/api"
 
   // Flask backend URL
-  URL:string="https:localhost:5000/api"
+  URL:string="https:localhost:5000/api/expense"
   private httpHeaders:HttpHeaders = new HttpHeaders({'Content-Type':'application/json'});
 
   constructor(private http:HttpClient) { }
   
   getOwnExpenses():Observable<OwnExpenses>{
     // return this.http.get<OwnExpenses>(this.URL+"/getExpends") //.NET
-    return this.http.get<OwnExpenses>(this.URL+"/expense/all") // Flask
+    return this.http.get<OwnExpenses>(this.URL+"/all") // Flask
   }
 
   postOwnExpenses(expense:OwnExpenses):Observable<OwnExpenses>{
     // return this.http.post<OwnExpenses>(this.URL+"/save", expense,{headers:this.httpHeaders}); // .NET
-    return this.http.post<OwnExpenses>(this.URL+"/expense/new", expense,{headers:this.httpHeaders}); // Flask
+    return this.http.post<OwnExpenses>(this.URL+"/new", expense,{headers:this.httpHeaders}); // Flask
   }
 
+  // That delete method must be implemented in Flask
   clearOwnExpenses(){
     return this.http.delete(this.URL+"/clearExpends");
   }
@@ -39,8 +40,12 @@ export class ownExpensesService {
     return this.http.get<OwnExpenses>(this.URL+"/expense/by-id/"+id) // Flask
   }
 
-  deleteById(id:number):Observable<OwnExpenses>{
-    return this.http.
+  deleteById(id:number):Observable<string>{
+    return this.http.delete<string>(this.URL+"/remove/"+id) // Flask
+  }
+
+  updateById(id:number):Observable<OwnExpenses>{
+    return this.http.put<OwnExpenses>(this.URL+"/expense/by-id/"+id,{headers:this.httpHeaders}) // Flask
   }
 
 }

@@ -1,7 +1,7 @@
 export class OwnExpenses{
-     type:string="";
-     amount:Number=0;
+     id:number = 0;
+     name:string = '';
+     amount:number=0;
      date:string="";
-
-
+     expense_type_id:number=0;
 }

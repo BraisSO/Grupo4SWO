@@ -1,7 +1,7 @@
 from flask import Blueprint
 from expense_type.controller.expense_type_controller import *
 
-expenses_types_routes = Blueprint("expense_type_route", __name__, url_prefix="/api/type-expense")
+expenses_types_routes = Blueprint("expense_type_route", __name__, url_prefix="/api/expense-type")
 
 @expenses_types_routes.get("/all")
 def get_all_expenses_types_route():
