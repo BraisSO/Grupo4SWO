@@ -4,7 +4,7 @@ from dao_schema.expense_schema import ExpenseSchema
 
 ma = Marshmallow()
 
-class TypeExpenseSchema(ma.Schema):
+class ExpenseTypeSchema(ma.Schema):
     id = fields.Integer()
     name = fields.String()
     expenses = fields.Nested(ExpenseSchema, many=True)

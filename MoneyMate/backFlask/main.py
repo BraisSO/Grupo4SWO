@@ -1,12 +1,12 @@
 from flask import Flask
 from flask_jwt_extended import JWTManager
-from dao.type_expense_dao import TypeExpense
+from dao.expense_type_dao import ExpenseType
 from dao.expense_dao import Expense
 from dao.user_dao import User
 from envs.dev.dev_env import config, get_database_config
 from database.db import init_app
 from expense.routes.expense_route import expenses_routes
-from type_expense.routes.type_expense_route import types_expenses_routes
+from expense_type.routes.expense_type_route import expenses_types_routes
 from user.route.user_route import users_routes
 from flask_cors import CORS
 
@@ -36,7 +36,7 @@ init_app(app)
 
 app.register_blueprint(users_routes)
 app.register_blueprint(expenses_routes)
-app.register_blueprint(types_expenses_routes)
+app.register_blueprint(expenses_types_routes)
 
 
 if __name__ == "__main__":

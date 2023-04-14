@@ -7,7 +7,7 @@ from database.db import db
 #     return Expense.query.all()
 
 # def find_all_expense_same_type_repo(idType):
-#     data = Expense.query.filter(Expense.type_expense_id == idType).all()
+#     data = Expense.query.filter(Expense.expense_type_id == idType).all()
 #     result = []
 #     for i in data:
 #         info = {
@@ -29,7 +29,7 @@ from database.db import db
 #             'name': i.name,
 #             'amount': i.amount,
 #             'date' : i.date,
-#             'type_expense_id' : i.type_expense_id
+#             'expense_type_id' : i.expense_type_id
 #         }
 #         result.append(info)
 #     print(result)
@@ -54,7 +54,7 @@ from database.db import db
 #     expense_to_modify.name = expense_altered.name
 #     expense_to_modify.amount = expense_altered.amount
 #     expense_to_modify.date = expense_altered.date
-#     expense_to_modify.type_expense_id = expense_altered.type_expense_id
+#     expense_to_modify.expense_type_id = expense_altered.expense_type_id
 #     db.session.commit()
 #     return expense_to_modify
 
@@ -69,14 +69,14 @@ def find_all_expenses_repo(user_id):
             'name': i.name,
             'amount': i.amount,
             'date' : i.date,
-            'type_expense_id' : i.type_expense_id,
+            'expense_type_id' : i.expense_type_id,
             'user_id' : i.user_id
         }
         result.append(info)
     return result
 
 def find_all_expense_same_type_repo(user_id, idType):
-    data = Expense.query.filter(Expense.user_id == user_id and Expense.type_expense_id == idType).all()
+    data = Expense.query.filter(Expense.user_id == user_id and Expense.expense_type_id == idType).all()
     result = []
     for i in data:
         info = {
@@ -84,7 +84,7 @@ def find_all_expense_same_type_repo(user_id, idType):
             'name': i.name,
             'amount': i.amount,
             'date' : i.date,
-            'type_expense_id' : i.type_expense_id,
+            'expense_type_id' : i.expense_type_id,
             'user_id' : i.user_id
         }
         result.append(info)
@@ -100,7 +100,7 @@ def find_expense_by_name_repo(user_id, name):
             'name': i.name,
             'amount': i.amount,
             'date' : i.date,
-            'type_expense_id' : i.type_expense_id,
+            'expense_type_id' : i.expense_type_id,
             'user_id' : i.user_id
         }
         result.append(info)
@@ -109,7 +109,7 @@ def find_expense_by_name_repo(user_id, name):
 
 def find_expense_by_id_repo(user_id, id):
     expense = Expense.query.get(id)
-    if expense.user_id == user_id:
+    if expense  is not None and expense.user_id == user_id:
         return expense
     else:
         return False
@@ -121,7 +121,7 @@ def save_new_expense_repo(expense):
 
 def remove_expense_repo(user_id, id):
     expense_to_remove = Expense.query.get(id)
-    if expense_to_remove.user_id == user_id:
+    if expense_to_remove is not None and expense_to_remove.user_id == user_id:
         db.session.delete(expense_to_remove)
         db.session.commit()
         return expense_to_remove
@@ -130,11 +130,11 @@ def remove_expense_repo(user_id, id):
 
 def modify_expense_repo(id, expense_altered):
     expense_to_modify = Expense.query.get(id)
-    if expense_to_modify.user_id == expense_altered.user_id:
+    if expense_to_modify is not None and expense_to_modify.user_id == expense_altered.user_id:
         expense_to_modify.name = expense_altered.name
         expense_to_modify.amount = expense_altered.amount
         expense_to_modify.date = expense_altered.date
-        expense_to_modify.type_expense_id = expense_altered.type_expense_id
+        expense_to_modify.expense_type_id = expense_altered.expense_type_id
         db.session.commit()
         return expense_to_modify
     else:

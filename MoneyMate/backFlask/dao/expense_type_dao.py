@@ -1,7 +1,7 @@
 from database.db import db
 
-class TypeExpense(db.Model):
-    __tablename__="types_expenses"
+class ExpenseType(db.Model):
+    __tablename__="expenses_types"
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(50), unique=True, nullable=False)
     expenses = db.Relationship("Expense", backref="expenses")

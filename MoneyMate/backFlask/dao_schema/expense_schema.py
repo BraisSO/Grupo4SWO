@@ -8,3 +8,5 @@ class ExpenseSchema(ma.Schema):
     name = fields.String()
     amount = fields.Float()
     date = fields.String()
+    expense_type_id = fields.Integer()
+    user_id = fields.Integer()

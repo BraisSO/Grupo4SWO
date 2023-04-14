@@ -30,9 +30,9 @@ def post_new_expense():
     name = request.json["name"]
     amount = request.json["amount"]
     date = request.json["date"]
-    type_expense_id = request.json["typeExpenseId"]
+    expense_type_id = request.json["expenseTypeId"]
     user_id = get_id_from_token()
-    expense_to_save = Expense(None, name, type_expense_id, user_id, amount, date)
+    expense_to_save = Expense(None, name, expense_type_id, user_id, amount, date)
     saved_expense = save_new_expense_repo(expense_to_save)
     return expenseSchema.jsonify(saved_expense)
 
@@ -42,17 +42,17 @@ def delete_expense(id):
     if expense_deleted is not False:
         return jsonify({"message" : f"Success!! expense {expense_deleted.name} was removed"})
     else:
-        return jsonify({"message" : "Eror!! This is not your expense"})
+        return jsonify({"message" : "Eror!! You haven't this expense"})
 
 def update_expense(id):
     name = request.json["name"]
     amount = request.json["amount"]
     date = request.json["date"]
-    type_expense_id = request.json["typeExpenseId"]
+    expense_type_id = request.json["expenseTypeId"]
     user_id = get_id_from_token()
-    expense_to_update = Expense(None, name, type_expense_id, user_id, amount, date)
+    expense_to_update = Expense(None, name, expense_type_id, user_id, amount, date)
     updated_expense = modify_expense_repo(id, expense_to_update)
     if updated_expense is not False:
         return expenseSchema.jsonify(updated_expense)
     else:
-        return jsonify({"message" : "Eror!! This is not your expense"})
+        return jsonify({"message" : "Eror!! You haven't expense"})
