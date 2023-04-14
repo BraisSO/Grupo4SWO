@@ -1,12 +1,9 @@
 import datetime
-
-import jwt
 from dao_schema.user_schema import UserSchema
 from flask import request, jsonify
 from flask_jwt_extended import create_access_token, decode_token
 from repo.user_repo import *
 from werkzeug.security import generate_password_hash, check_password_hash
-from envs.dev.dev_env import get_database_config
 
 userSchema = UserSchema()
 

@@ -1,4 +1,3 @@
-from datetime import datetime
 from dao.type_expense_dao import TypeExpense
 from dao.user_dao import User
 from database.db import db
@@ -11,14 +10,13 @@ class Expense(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey(User.id))
     user = db.Relationship("User", backref=db.backref('user'), overlaps="their_expenses,their_expenses")
     amount = db.Column(db.Float, nullable=False)
-    date = db.Column(db.DateTime)
+    date = db.Column(db.String(70), nullable=False)
 
 
-    def __init__(self, id, name, type_expense_id, user_id, amount, dateString):
+    def __init__(self, id, name, type_expense_id, user_id, amount, date):
         self.id = id
         self.name = name
         self.amount = amount
-        self.date = datetime.strptime(dateString, '%Y/%m/%d %H:%M:%S') # Aquí estoy suponiendo que el input de tipo date del archivo home.component.html en el front devuelve un tipo date con este formato parseado a string
+        self.date = date
         self.type_expense_id = type_expense_id
         self.user_id = user_id
-# To silence this warning, add the parameter 'overlaps="their_expenses,their_expenses"' to the 'Expense.user' relationship.
