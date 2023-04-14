@@ -32,11 +32,16 @@ def get_id_from_token():
     auth_header = request.headers.get('Authorization')
     if auth_header:
         token = auth_header.split(" ")[1]
-        # encriptation_key = get_database_config().get('SECRET_KEY')
-        payload = jwt.decode(token, algorithms="HS256") #Aquí hai un faio que devolve un error 422
-        print(payload)
-        id = payload.id
-        print(id)
+        decoded_token = decode_token(token)
+        # The token has this structure, so we need to get the id but first we need to get its ancestors
+        #"sub": {
+        # "payload": {
+        #   "id": 1,
+        #   "username": "DoloresFB"
+        # },
+        sub = decoded_token["sub"]
+        payload = sub['payload']
+        id = payload['id']
         return id
     else:
         return None
@@ -85,9 +90,7 @@ def update_controller():
     password = request.json["password"]
     password_hash = generate_password_hash(password)
     new_user = User(None, username, email, first_name, surname1, surname2, password_hash)
-    print("Hola")
     id = get_id_from_token()
     user_updated = update_repo(id, new_user)
     new_token = create_token(user_updated)
-    return jsonify({"user": userSchema.jsonify(user_updated), "userToken" : new_token.json["userToken"]}) # Non me fio moito disto
-    # Debe devolver un json con duas claves, user e userToken. A primeiro cos novos datos do usuario e a segunda co novo token
+    return userSchema.jsonify(user_updated), 200

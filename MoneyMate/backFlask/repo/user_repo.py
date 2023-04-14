@@ -14,7 +14,7 @@ def update_repo(id, user_new_data):
     user_to_update = User.query.get(id)
     user_to_update.username = user_new_data.username
     user_to_update.email = user_new_data.email
-    user_to_update.first_name = user_new_data.firstname
+    user_to_update.first_name = user_new_data.first_name
     user_to_update.surname1 = user_new_data.surname1
     user_to_update.surname2 = user_new_data.surname2
     user_to_update.password = user_new_data.password
