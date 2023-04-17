@@ -35,6 +35,10 @@ export class ownExpensesService {
   findByName(name:string):Observable<OwnExpenses>{
     return this.http.get<OwnExpenses>(this.URL+"/by-name/"+name) // Flask
   }
+  
+  findSimilarExpenses(name:string):Observable<OwnExpenses>{
+    return this.http.get<OwnExpenses>(this.URL+"/similar/"+name) // Flask
+  }
 
   findById(id:number):Observable<OwnExpenses>{
     return this.http.get<OwnExpenses>(this.URL+"/by-id/"+id) // Flask

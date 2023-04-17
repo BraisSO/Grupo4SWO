@@ -16,6 +16,12 @@ def list_expenses_same_type(idType):
     expenses = find_all_expense_same_type_repo(user_id, idType)
     return expensesSchema.jsonify(expenses)
 
+
+def get_expense_similar_to(name):
+    user_id = get_id_from_token()
+    expenses = find_expense_like_repo(user_id, name)
+    return expensesSchema.jsonify(expenses)
+
 def get_expense_by_name(name):
     user_id = get_id_from_token()
     expenses = find_expense_by_name_repo(user_id, name)

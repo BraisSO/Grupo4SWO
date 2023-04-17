@@ -107,6 +107,22 @@ def find_expense_by_name_repo(user_id, name):
     print(result)
     return result
 
+def find_expense_like_repo(user_id, name):
+    data = Expense.query.filter(Expense.user_id == user_id or Expense.name.ilike("%"+name+"%")).all()
+    result = []
+    for i in data:
+        info = {
+            'id': i.id,
+            'name': i.name,
+            'amount': i.amount,
+            'date' : i.date,
+            'expense_type_id' : i.expense_type_id,
+            'user_id' : i.user_id
+        }
+        result.append(info)
+    print(result)
+    return result
+
 def find_expense_by_id_repo(user_id, id):
     expense = Expense.query.get(id)
     if expense  is not None and expense.user_id == user_id:

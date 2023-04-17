@@ -19,6 +19,11 @@ def list_expenses_same_type_route(idType):
 def get_expense_by_name_route(name):
     return get_expense_by_name(name)
 
+@expenses_routes.get("/similar/<string:name>")
+@jwt_required()
+def get_similar_expenses(name):
+    return get_expense_similar_to(name)
+
 @expenses_routes.get("/by-id/<int:id>")
 @jwt_required()
 def get_expense_by_id_route(id):

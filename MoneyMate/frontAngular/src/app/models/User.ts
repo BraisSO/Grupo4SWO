@@ -6,4 +6,6 @@ export class User{
     surname1:string= '';
     surname2:string= '';
     password:string = '';
+    userToken:string = "";
+    constructor(){ }
 }

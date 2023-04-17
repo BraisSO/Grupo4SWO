@@ -4,7 +4,7 @@
         <h1 class="text-center">MoneyMate</h1>
         <form (ngSubmit)="postOwnExpenses()">
             <div class="row">
-                <div class="col-md-3">
+                <div class="col-md-2">
                     <div class="form-group">
                         <label for="type">Type:</label>
                         <select class="form-select" id="type" name="type" [(ngModel)]="expenseToSave.expense_type_id">
@@ -18,10 +18,10 @@
                         <input class="form-control" type="text" id="name" name="name" [(ngModel)]="expenseToSave.name">
                     </div>
                 </div>
-                <div class="col-md-1">
+                <div class="col-md-2">
                     <div class="form-group">
                         <label for="amount">Amount:</label>
-                        <input class="form-control" type="number" id="amount" name="amount" step="10" min="0"
+                        <input class="form-control" type="number" id="amount" name="amount" step="0.01" min="0"
                             placeholder="0" [(ngModel)]="expenseToSave.amount">
                     </div>
                 </div>
@@ -80,6 +80,23 @@
                     <div class="form-group">
                         <label for="filter-btn">&nbsp;</label>
                         <button class="btn btn-primary form-control" type="submit" id="filter-btn">Filter</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+        <h2>Find</h2>
+        <form (ngSubmit)="getSimilarExpenses()">
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label for="nameToFind">Expense:</label>
+                        <input class="form-control" type="text" id="nameToFind" name="nameToFind" [(ngModel)]="nameToFind">
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label for="filter-btn">&nbsp;</label>
+                        <button class="btn btn-primary form-control" type="submit" id="find-btn">Find</button>
                     </div>
                 </div>
             </div>

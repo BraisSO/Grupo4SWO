@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
-import { UserLogin } from 'src/app/models/UserLogin';
+import { User } from 'src/app/models/User';
 import { UserService } from 'src/app/service/user.service';
 
 @Component({
@@ -11,32 +11,33 @@ import { UserService } from 'src/app/service/user.service';
 })
 export class LoginComponent implements OnInit {
 
-  form:FormGroup;
-  
-  
-  constructor(private formBuilder:FormBuilder, private userService:UserService, private router:Router) {
+  form: FormGroup;
+
+
+  constructor(private formBuilder: FormBuilder, private userService: UserService, private router: Router) {
     this.form = formBuilder.group({
-      username : [],
-      password : []
+      username: [],
+      password: []
     });
-   }
+  }
 
   ngOnInit(): void {
   }
 
-  postLogin(){
-    
-    let username = this.form.get('username')?.value;
-    let password =  this.form.get('password')?.value;
-    let userLogin = new UserLogin(username, password);
+  postLogin() {
+
+    let userLogin = new User();
+    userLogin.username = this.form.get('username')?.value;
+    userLogin.password = this.form.get('password')?.value;
+
     this.userService.login(userLogin).subscribe(
-      res=> {
+      res => {
         sessionStorage.setItem('token', res.userToken) // Almacena el token en sessionStorage (El almacén de la sesión del navegador) bajo el nombre "token"
         this.router.navigate(['/']) //Redirixe ao home
       },
-      err=> {
+      err => {
         console.error(err)
-        
+
       });
   }
 }

@@ -2,7 +2,6 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { User } from '../models/User';
-import { UserLogin } from '../models/UserLogin';
 
 @Injectable({
   providedIn: 'root'
@@ -18,9 +17,9 @@ export class UserService {
     return this.http.post<User>(this.URL+"/sign-in", user,{headers:this.httpHeaders}); // Flask
   }
 
-  login(user:UserLogin):Observable<UserLogin>{
+  login(user:User):Observable<User>{
     console.log(this.URL+"/login", user,{headers:this.httpHeaders})
-    return this.http.post<UserLogin>(this.URL+"/login", user,{headers:this.httpHeaders}); // Flask
+    return this.http.post<User>(this.URL+"/login", user,{headers:this.httpHeaders}); // Flask
   }
 
   update(user:User):Observable<User>{

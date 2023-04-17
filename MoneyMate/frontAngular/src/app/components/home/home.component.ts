@@ -13,6 +13,7 @@ export class HomeComponent implements OnInit {
 
   typeFilter:number = 0;
   filtrado:boolean = false;
+  nameToFind:string = ""
   expenseToSave:OwnExpenses= new OwnExpenses(); //obxecto que usamos para inyectar os datos do formulario e pasalo a API
   expensesList:any=[]; //lista donde gardamos os datos da api
   filteredExpensesList:any=[];
@@ -51,6 +52,13 @@ export class HomeComponent implements OnInit {
 
   getSameTypeExpenses(){
     this.ownExpensesService.findByType(this.typeFilter).subscribe(res=>{
+      console.log(res)
+      this.filteredExpensesList=res;
+    })
+    this.filtrado = true;
+  }
+  getSimilarExpenses(){
+    this.ownExpensesService.findSimilarExpenses(this.nameToFind).subscribe(res=>{
       console.log(res)
       this.filteredExpensesList=res;
     })
