@@ -7,24 +7,25 @@
                 <div class="col-md-3">
                     <div class="form-group">
                         <label for="type">Type:</label>
-                        <select class="form-select" id="type" name="type" [(ngModel)]="expense.type">
-                            <option value="food">Food</option>
-                            <option value="clothing">Clothing</option>
-                            <option value="housing">Housing</option>
-                            <option value="transportation">Transportation</option>
-                            <option value="entertainment">Entertainment</option>
-                            <option value="others">Others</option>
+                        <select class="form-select" id="type" name="type" [(ngModel)]="expense.expense_type_id">
+                                <option  *ngFor="let expenseType of expensesTypesList" value="{{expenseType.id}}">{{ expenseType.name }}</option>
                         </select>
                     </div>
                 </div>
                 <div class="col-md-3">
+                    <div class="form-group">
+                        <label for="name">Expense:</label>
+                        <input class="form-control" type="text" id="name" name="name" [(ngModel)]="expense.name">
+                    </div>
+                </div>
+                <div class="col-md-1">
                     <div class="form-group">
                         <label for="amount">Amount:</label>
                         <input class="form-control" type="number" id="amount" name="amount" step="10" min="0"
                             placeholder="0" [(ngModel)]="expense.amount">
                     </div>
                 </div>
-                <div class="col-md-3">
+                <div class="col-md-2">
                     <div class="form-group">
                         <label for="date">Date:</label>
                         <input class="form-control" type="date" id="date" name="date" [(ngModel)]="expense.date">
@@ -42,6 +43,7 @@
         <table class="table">
             <thead class="thead-dark">
                 <tr>
+                    <th>Expense</th>
                     <th>Type</th>
                     <th>Amount</th>
                     <th>Date</th>
@@ -50,7 +52,8 @@
             </thead>
             <tbody id="expense-list">
                 <tr *ngFor="let expense of expensesList; let i=index">
-                    <td>{{expense.type}}</td>
+                    <td>{{expense.name}}</td>
+                    <td>{{expensesTypesList[expense.expense_type_id - 1].name}}</td>
                     <td>{{expense.amount}}</td>
                     <td>{{expense.date}}</td>
                 </tr>
@@ -69,13 +72,7 @@
                     <div class="form-group">
                         <label for="type-filter">Type:</label>
                         <select class="form-select" id="type-filter" name="type-filter">
-                            <option value="all">All</option>
-                            <option value="food">Food</option>
-                            <option value="clothing">Clothing</option>
-                            <option value="housing">Housing</option>
-                            <option value="transportation">Transportation</option>
-                            <option value="entertainment">Entertainment</option>
-                            <option value="others">Others</option>
+                            <option *ngFor="let expenseType of expensesTypesList" value="{{expenseType.id}}">{{expenseType.name}}</option>
                         </select>
                     </div>
                 </div>

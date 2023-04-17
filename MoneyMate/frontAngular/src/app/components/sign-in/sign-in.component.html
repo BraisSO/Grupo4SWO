@@ -1,0 +1,46 @@
+<div>
+    <app-nav></app-nav>
+    <div class="container">
+        <h1 class="text-center">Sing in</h1>
+        <form (ngSubmit)="postSignIn()">
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <div class="form-group">
+                        <input class="form-control" type="text" id="username" name="username" placeholder="username" [(ngModel)]="user.username">
+                    </div>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <div class="form-group">
+                        <input class="form-control" type="text" id="email" name="email" placeholder="email" [(ngModel)]="user.email">
+                    </div>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <div class="form-group">
+                        <input class="form-control" type="text" id="firstName" name="firstName" placeholder="first name" [(ngModel)]="user.firstName">
+                    </div>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <div class="form-group">
+                        <input class="form-control" type="text" id="surname1" name="surname1" placeholder="surname" [(ngModel)]="user.surname1">
+                    </div>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <div class="form-group">
+                        <input class="form-control" type="text" id="surname2" name="surname2" placeholder="2nd surname (if apply)" [(ngModel)]="user.surname2">
+                    </div>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <div class="form-group">
+                        <input class="form-control" type="text" id="password" name="password" placeholder="user password" [(ngModel)]="user.password">
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label for="save-btn">&nbsp;</label>
+                        <button class="btn btn-primary form-control" type="submit" id="save-btn">Sign in</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

@@ -30,7 +30,7 @@ def post_new_expense():
     name = request.json["name"]
     amount = request.json["amount"]
     date = request.json["date"]
-    expense_type_id = request.json["expenseTypeId"]
+    expense_type_id = request.json["expense_type_id"]
     user_id = get_id_from_token()
     expense_to_save = Expense(None, name, expense_type_id, user_id, amount, date)
     saved_expense = save_new_expense_repo(expense_to_save)
@@ -48,7 +48,7 @@ def update_expense(id):
     name = request.json["name"]
     amount = request.json["amount"]
     date = request.json["date"]
-    expense_type_id = request.json["expenseTypeId"]
+    expense_type_id = request.json["expense_type_id"]
     user_id = get_id_from_token()
     expense_to_update = Expense(None, name, expense_type_id, user_id, amount, date)
     updated_expense = modify_expense_repo(id, expense_to_update)

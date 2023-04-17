@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 })
 export class ExpenseTypeService {
   
-  URL:string="https:localhost:5000/api/expense-type"
+  URL:string="http://localhost:5000/api/expense-type"
   private httpHeaders:HttpHeaders = new HttpHeaders({'Content-Type':'application/json'});
 
   constructor(private http:HttpClient) { }

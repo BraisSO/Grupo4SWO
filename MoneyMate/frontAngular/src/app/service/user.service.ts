@@ -2,13 +2,14 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { User } from '../models/User';
+import { UserLogin } from '../models/UserLogin';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
 
-  URL:string="https:localhost:5000/api/user"
+  URL:string="http://localhost:5000/api/user"
   private httpHeaders:HttpHeaders = new HttpHeaders({'Content-Type':'application/json'});
 
   constructor(private http:HttpClient) { }
@@ -17,8 +18,9 @@ export class UserService {
     return this.http.post<User>(this.URL+"/sign-in", user,{headers:this.httpHeaders}); // Flask
   }
 
-  login(user:User):Observable<string>{
-    return this.http.post<string>(this.URL+"/login", user,{headers:this.httpHeaders}); // Flask
+  login(user:UserLogin):Observable<UserLogin>{
+    console.log(this.URL+"/login", user,{headers:this.httpHeaders})
+    return this.http.post<UserLogin>(this.URL+"/login", user,{headers:this.httpHeaders}); // Flask
   }
 
   update(user:User):Observable<User>{
@@ -26,7 +28,7 @@ export class UserService {
   }
 
   delete():Observable<string>{
-    return this.http.delete<string>(this.URL+"/login"); // Flask
+    return this.http.delete<string>(this.URL+"/remove"); // Flask
   }
 
 }

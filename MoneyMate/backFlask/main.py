@@ -13,6 +13,7 @@ from flask_cors import CORS
 # Configurar el archivo app.py como el archivo principal de la aplicación
 app  = Flask(__name__)
 
+
 # Configurar Cors (Enlace cruzado de datos)
 app.config['JSON_AS_ASCII'] = False
 CORS(app)

@@ -12,7 +12,7 @@ export class ownExpensesService {
   // URL:string="https://localhost:7023/api"
 
   // Flask backend URL
-  URL:string="https:localhost:5000/api/expense"
+  URL:string="http://localhost:5000/api/expense"
   private httpHeaders:HttpHeaders = new HttpHeaders({'Content-Type':'application/json'});
 
   constructor(private http:HttpClient) { }
