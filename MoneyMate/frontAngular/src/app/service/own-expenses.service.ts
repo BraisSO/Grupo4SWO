@@ -33,11 +33,15 @@ export class ownExpensesService {
   }
 
   findByName(name:string):Observable<OwnExpenses>{
-    return this.http.get<OwnExpenses>(this.URL+"/expense/by-name/"+name) // Flask
+    return this.http.get<OwnExpenses>(this.URL+"/by-name/"+name) // Flask
   }
 
   findById(id:number):Observable<OwnExpenses>{
-    return this.http.get<OwnExpenses>(this.URL+"/expense/by-id/"+id) // Flask
+    return this.http.get<OwnExpenses>(this.URL+"/by-id/"+id) // Flask
+  }
+  
+  findByType(id:number):Observable<OwnExpenses>{
+    return this.http.get<OwnExpenses>(this.URL+"/of-type/"+id) // Flask
   }
 
   deleteById(id:number):Observable<string>{
@@ -45,7 +49,7 @@ export class ownExpensesService {
   }
 
   updateById(id:number):Observable<OwnExpenses>{
-    return this.http.put<OwnExpenses>(this.URL+"/expense/by-id/"+id,{headers:this.httpHeaders}) // Flask
+    return this.http.put<OwnExpenses>(this.URL+"/modify/"+id,{headers:this.httpHeaders}) // Flask
   }
 
 }

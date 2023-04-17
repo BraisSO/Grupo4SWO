@@ -16,6 +16,18 @@ def find_expense_type_by_name_repo(name):
     print(result)
     return result
 
+def find_all_expense_same_type_repo(idType):
+    data = ExpenseType.query.filter(ExpenseType.expense_type_id == idType).all()
+    result = []
+    for i in data:
+        info = {
+            'id': i.id,
+            'name': i.name,
+        }
+        result.append(info)
+    print(result)
+    return result
+
 def find_expense_type_by_id_repo(id):
     return ExpenseType.query.get(id)
 

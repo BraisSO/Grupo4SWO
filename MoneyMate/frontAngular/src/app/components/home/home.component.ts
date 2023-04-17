@@ -11,8 +11,11 @@ import { ExpenseTypeService } from 'src/app/service/expense-type.service';
 })
 export class HomeComponent implements OnInit {
 
-  expense= new OwnExpenses(); //obxecto que usamos para inyectar os datos do formulario e pasalo a API
+  typeFilter:number = 0;
+  filtrado:boolean = false;
+  expenseToSave:OwnExpenses= new OwnExpenses(); //obxecto que usamos para inyectar os datos do formulario e pasalo a API
   expensesList:any=[]; //lista donde gardamos os datos da api
+  filteredExpensesList:any=[];
   expensesTypesList:any=[]
   constructor(private ownExpensesService:ownExpensesService, private expenseTypeService:ExpenseTypeService, private router:Router) { }
 
@@ -29,8 +32,8 @@ export class HomeComponent implements OnInit {
 
 
   postOwnExpenses(){
-    console.log(this.expense);
-    this.ownExpensesService.postOwnExpenses(this.expense).subscribe();
+    console.log(this.expenseToSave);
+    this.ownExpensesService.postOwnExpenses(this.expenseToSave).subscribe();
     location.reload(); //recarga de la pagina
   }
   
@@ -44,6 +47,14 @@ export class HomeComponent implements OnInit {
     this.expenseTypeService.getAll().subscribe(res=>{
       this.expensesTypesList=res;
     })
+  }
+
+  getSameTypeExpenses(){
+    this.ownExpensesService.findByType(this.typeFilter).subscribe(res=>{
+      console.log(res)
+      this.filteredExpensesList=res;
+    })
+    this.filtrado = true;
   }
 
 }

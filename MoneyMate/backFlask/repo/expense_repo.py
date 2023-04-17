@@ -76,7 +76,7 @@ def find_all_expenses_repo(user_id):
     return result
 
 def find_all_expense_same_type_repo(user_id, idType):
-    data = Expense.query.filter(Expense.user_id == user_id and Expense.expense_type_id == idType).all()
+    data = Expense.query.filter(Expense.user_id == user_id or Expense.expense_type_id == idType).all()
     result = []
     for i in data:
         info = {
@@ -92,7 +92,7 @@ def find_all_expense_same_type_repo(user_id, idType):
     return result
 
 def find_expense_by_name_repo(user_id, name):
-    data = Expense.query.filter(Expense.user_id == user_id and Expense.name == name).all()
+    data = Expense.query.filter(Expense.user_id == user_id or Expense.name == name).all()
     result = []
     for i in data:
         info = {
