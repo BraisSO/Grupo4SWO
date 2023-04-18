@@ -51,20 +51,22 @@
                     <th></th>
                 </tr>
             </thead>
-                <tbody id="expense-list">
-                    <tr *ngFor="let expense of expensesList; let i=index">
-                        <td>{{expense.name}}</td>
-                        <td>{{expensesTypesList[expense.expense_type_id - 1].name}}</td>
-                        <td>{{expense.amount}}</td>
-                        <td>{{expense.date}}</td>
-                        <td>
-                            <form>
-                                <i class="fa-sharp fa-solid fa-shake fa-pen-to-square" style="color: #ffe4c4;"></i>
-                                <i class="fa-solid fa-dumpster-fire fa-bounce ms-2" style="color: #ff6551;"></i>
-                            </form>
-                        </td>
-                    </tr>
-                </tbody>
+            <tbody id="expense-list">
+                <tr *ngFor="let expense of expensesList; let i=index">
+                    <td>{{expense.name}}</td>
+                    <td>{{expensesTypesList[expense.expense_type_id - 1].name}}</td>
+                    <td>{{expense.amount}}</td>
+                    <td>{{expense.date}}</td>
+                    <td>
+                        <button type="button" class="btn btn-light" (click)="selectUpdate(expense)">
+                            <i class="fa-sharp fa-solid fa-shake fa-pen-to-square" style="color: #ffe4c4;"></i>
+                        </button>
+                        <button type="button" class="btn btn-light" (click)="deleteExpense(expense.id)">
+                            <i class="fa-solid fa-dumpster-fire fa-bounce ms-2" style="color: #ff6551;"></i>
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
         </table>
         <div class="d-flex flex-row-reverse">
             <div class="form-group">
@@ -132,3 +134,4 @@
         </table>
     </div>
 </div>
+

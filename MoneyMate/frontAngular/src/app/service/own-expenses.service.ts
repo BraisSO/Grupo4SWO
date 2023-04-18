@@ -48,12 +48,12 @@ export class ownExpensesService {
     return this.http.get<OwnExpenses>(this.URL+"/of-type/"+id) // Flask
   }
 
-  deleteById(id:number):Observable<string>{
-    return this.http.delete<string>(this.URL+"/remove/"+id) // Flask
+  deleteById(id:number):Observable<any>{
+    return this.http.delete<any>(this.URL+"/remove/"+id) // Flask
   }
 
-  updateById(id:number):Observable<OwnExpenses>{
-    return this.http.put<OwnExpenses>(this.URL+"/modify/"+id,{headers:this.httpHeaders}) // Flask
+  update(expense:OwnExpenses):Observable<OwnExpenses>{
+    return this.http.put<OwnExpenses>(this.URL+"/modify/"+expense.id, expense,{headers:this.httpHeaders}) // Flask
   }
 
 }

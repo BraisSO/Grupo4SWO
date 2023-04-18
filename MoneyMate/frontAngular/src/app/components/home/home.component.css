@@ -1,33 +1,40 @@
-		h1 {
-			font-family: 'Helvetica Neue', sans-serif;
-			font-weight: bold;
-			font-size: 48px;
-			color: #2c3e50;
-			margin-top: 50px;
-			margin-bottom: 30px;
-			text-align: center;
-			letter-spacing: 2px;
-			margin-bottom: 80px;
-		}
-		div.container {
-			background-color: #ffe4c4;
-			padding: 20px;
-			min-width: 80%;
-			padding-right: 10%;
-			padding-left: 10%;
-		}
-		th{
-			background-color: rgb(53, 48, 48);
-			color: white;
-		}
+h1 {
+	font-family: 'Helvetica Neue', sans-serif;
+	font-weight: bold;
+	font-size: 48px;
+	color: #2c3e50;
+	margin-top: 50px;
+	margin-bottom: 30px;
+	text-align: center;
+	letter-spacing: 2px;
+	margin-bottom: 80px;
+}
 
-		tr:nth-child(even) {background-color: #f2f2f2;}
-		tr:nth-child(odd) {background-color: white;}
+div.container {
+	background-color: #ffe4c4;
+	padding: 20px;
+	min-width: 80%;
+	padding-right: 10%;
+	padding-left: 10%;
+}
 
-		form {
-			margin-bottom: 30px;
-		}
-		table {
-			margin-bottom: 30px;
-		}
-		
+th {
+	background-color: rgb(53, 48, 48);
+	color: white;
+}
+
+tr:nth-child(even) {
+	background-color: #f2f2f2;
+}
+
+tr:nth-child(odd) {
+	background-color: white;
+}
+
+form {
+	margin-bottom: 30px;
+}
+
+table {
+	margin-bottom: 30px;
+}

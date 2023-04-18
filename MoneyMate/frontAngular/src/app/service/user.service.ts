@@ -18,7 +18,6 @@ export class UserService {
   }
 
   login(user:User):Observable<User>{
-    console.log(this.URL+"/login", user,{headers:this.httpHeaders})
     return this.http.post<User>(this.URL+"/login", user,{headers:this.httpHeaders}); // Flask
   }
 
