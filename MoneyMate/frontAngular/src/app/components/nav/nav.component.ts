@@ -7,9 +7,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavComponent implements OnInit {
 
+  log:string = "Login"
+  logRoute:string = "/login"
   constructor() { }
 
   ngOnInit(): void {
+    let token = sessionStorage.getItem('token');
+    if(!token){
+      this.log = "Login"
+      this.logRoute = "/login"
+    }else{
+      this.log = "Logout"
+      this.logRoute = "/logout"
+    }
   }
 
 }
