@@ -76,50 +76,53 @@ def find_all_expenses_repo(user_id):
     return result
 
 def find_all_expense_same_type_repo(user_id, idType):
-    data = Expense.query.filter(Expense.user_id == user_id or Expense.expense_type_id == idType).all()
+    data = Expense.query.filter(Expense.expense_type_id == idType).all()
     result = []
     for i in data:
-        info = {
-            'id': i.id,
-            'name': i.name,
-            'amount': i.amount,
-            'date' : i.date,
-            'expense_type_id' : i.expense_type_id,
-            'user_id' : i.user_id
-        }
-        result.append(info)
+        if i.user_id == user_id:
+            info = {
+                'id': i.id,
+                'name': i.name,
+                'amount': i.amount,
+                'date' : i.date,
+                'expense_type_id' : i.expense_type_id,
+                'user_id' : i.user_id
+            }
+            result.append(info)
     print(result)
     return result
 
 def find_expense_by_name_repo(user_id, name):
-    data = Expense.query.filter(Expense.user_id == user_id or Expense.name == name).all()
+    data = Expense.query.filter(Expense.name == name).all()
     result = []
     for i in data:
-        info = {
-            'id': i.id,
-            'name': i.name,
-            'amount': i.amount,
-            'date' : i.date,
-            'expense_type_id' : i.expense_type_id,
-            'user_id' : i.user_id
-        }
-        result.append(info)
+        if i.user_id == user_id:
+            info = {
+                'id': i.id,
+                'name': i.name,
+                'amount': i.amount,
+                'date' : i.date,
+                'expense_type_id' : i.expense_type_id,
+                'user_id' : i.user_id
+            }
+            result.append(info)
     print(result)
     return result
 
 def find_expense_like_repo(user_id, name):
-    data = Expense.query.filter(Expense.user_id == user_id or Expense.name.ilike("%"+name+"%")).all()
+    data = Expense.query.filter(Expense.name.ilike("%"+name+"%")).all()
     result = []
     for i in data:
-        info = {
-            'id': i.id,
-            'name': i.name,
-            'amount': i.amount,
-            'date' : i.date,
-            'expense_type_id' : i.expense_type_id,
-            'user_id' : i.user_id
-        }
-        result.append(info)
+        if i.user_id == user_id:
+            info = {
+                'id': i.id,
+                'name': i.name,
+                'amount': i.amount,
+                'date' : i.date,
+                'expense_type_id' : i.expense_type_id,
+                'user_id' : i.user_id
+            }
+            result.append(info)
     print(result)
     return result
 

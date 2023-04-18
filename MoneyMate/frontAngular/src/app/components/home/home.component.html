@@ -8,7 +8,8 @@
                     <div class="form-group">
                         <label for="type">Type:</label>
                         <select class="form-select" id="type" name="type" [(ngModel)]="expenseToSave.expense_type_id">
-                                <option  *ngFor="let expenseType of expensesTypesList" value="{{expenseType.id}}">{{ expenseType.name }}</option>
+                            <option *ngFor="let expenseType of expensesTypesList" value="{{expenseType.id}}">{{
+                                expenseType.name }}</option>
                         </select>
                     </div>
                 </div>
@@ -21,7 +22,7 @@
                 <div class="col-md-2">
                     <div class="form-group">
                         <label for="amount">Amount:</label>
-                        <input class="form-control" type="number" id="amount" name="amount" step="0.01" min="0"
+                        <input class="form-control" type="number" id="amount" name="amount" step="1" min="0"
                             placeholder="0" [(ngModel)]="expenseToSave.amount">
                     </div>
                 </div>
@@ -47,22 +48,29 @@
                     <th>Type</th>
                     <th>Amount</th>
                     <th>Date</th>
+                    <th></th>
                 </tr>
-
             </thead>
-            <tbody id="expense-list">
-                <tr *ngFor="let expense of expensesList; let i=index">
-                    <td>{{expense.name}}</td>
-                    <td>{{expensesTypesList[expense.expense_type_id - 1].name}}</td>
-                    <td>{{expense.amount}}</td>
-                    <td>{{expense.date}}</td>
-                </tr>
-            </tbody>
+                <tbody id="expense-list">
+                    <tr *ngFor="let expense of expensesList; let i=index">
+                        <td>{{expense.name}}</td>
+                        <td>{{expensesTypesList[expense.expense_type_id - 1].name}}</td>
+                        <td>{{expense.amount}}</td>
+                        <td>{{expense.date}}</td>
+                        <td>
+                            <form>
+                                <i class="fa-sharp fa-solid fa-shake fa-pen-to-square" style="color: #ffe4c4;"></i>
+                                <i class="fa-solid fa-dumpster-fire fa-bounce ms-2" style="color: #ff6551;"></i>
+                            </form>
+                        </td>
+                    </tr>
+                </tbody>
         </table>
         <div class="d-flex flex-row-reverse">
             <div class="form-group">
                 <label for="delete-btn">&nbsp;</label>
-                <button (click)="clearOwnExpenses()" class="btn btn-danger mb-3" type="button">Clear Expends</button>
+                <button (click)="clearOwnExpenses()" class="btn btn-danger mb-3" type="button"
+                    style="background-color: #ff6551;">Clear Expends</button>
             </div>
         </div>
         <h2>Filter</h2>
@@ -72,7 +80,8 @@
                     <div class="form-group">
                         <label for="type-filter">Type:</label>
                         <select class="form-select" id="type-filter" name="type-filter" [(ngModel)]="typeFilter">
-                            <option *ngFor="let expenseType of expensesTypesList" value="{{expenseType.id}}">{{expenseType.name}}</option>
+                            <option *ngFor="let expenseType of expensesTypesList" value="{{expenseType.id}}">
+                                {{expenseType.name}}</option>
                         </select>
                     </div>
                 </div>
@@ -90,7 +99,8 @@
                 <div class="col-md-3">
                     <div class="form-group">
                         <label for="nameToFind">Expense:</label>
-                        <input class="form-control" type="text" id="nameToFind" name="nameToFind" [(ngModel)]="nameToFind">
+                        <input class="form-control" type="text" id="nameToFind" name="nameToFind"
+                            [(ngModel)]="nameToFind">
                     </div>
                 </div>
                 <div class="col-md-3">
