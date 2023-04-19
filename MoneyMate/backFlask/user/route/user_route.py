@@ -21,3 +21,8 @@ def update_route():
 @jwt_required()
 def delete_route():
     return delete_controller()
+
+@users_routes.get("/my-profile")
+@jwt_required()
+def get_profile():
+    return get_my_user()

@@ -6,7 +6,7 @@ import { OwnExpenses } from '../models/OwnExpenses';
 @Injectable({
   providedIn: 'root'
 })
-export class ownExpensesService {
+export class OwnExpensesService {
 
   // // .Net backend URL
   // URL:string="https://localhost:7023/api"
@@ -28,8 +28,8 @@ export class ownExpensesService {
   }
 
   // That delete method must be implemented in Flask
-  clearOwnExpenses(){
-    return this.http.delete(this.URL+"/clearExpends");
+  clearOwnExpenses():Observable<any>{
+    return this.http.delete<any>(this.URL+"/clear");
   }
 
   findByName(name:string):Observable<OwnExpenses>{

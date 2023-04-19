@@ -1,0 +1,67 @@
+<div class="container">
+    <h1 class="text-center">MoneyMate</h1>
+    <h2>Expenses types</h2>
+    <form (ngSubmit)="getSameTypeExpenses()">
+        <div class="row">
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label for="type-filter">filter:</label>
+                    <select class="form-select" id="type-filter" name="type-filter" [(ngModel)]="typeFilter">
+                        <option *ngFor="let expenseType of expensesTypesList" value="{{expenseType.id}}">
+                            {{expenseType.name}}</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label for="filter-btn">&nbsp;</label>
+                    <button class="btn btn-primary form-control" type="submit" id="filter-btn"
+                        style="background-color: '#3085d6';">Filter</button>
+                </div>
+            </div>
+        </div>
+    </form>
+    <form (ngSubmit)="postNewExpensesType()">
+        <div class="row">
+            <div class="col-md-3">
+                <div class="form-group">
+                    <input class="form-control" id="name" name="name" placeholder="New expense type">
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-group">
+                    <button class="btn btn-primary form-control" type="submit" id="save-btn"
+                        style="background-color: '#3085d6';">Save</button>
+                </div>
+            </div>
+        </div>
+    </form>
+    <table *ngIf="filtrado" class="table">
+        <thead class="thead-dark">
+            <tr>
+                <th>Expense</th>
+                <th>Type</th>
+                <th>Amount</th>
+                <th>Date</th>
+                <th></th>
+            </tr>
+
+        </thead>
+        <tbody>
+            <tr *ngFor="let expense of filteredExpensesList; let i=index">
+                <td>{{expense.name}}</td>
+                <td>{{expensesTypesList[expense.expense_type_id - 1].name}}</td>
+                <td>{{expense.amount}}</td>
+                <td>{{expense.date}}</td>
+                <td>
+                    <button type="button" class="btn btn-light" (click)="selectUpdate(expense)">
+                        <i class="fa-sharp fa-solid fa-shake fa-pen-to-square" style="color: #ffe4c4;"></i>
+                    </button>
+                    <button type="button" class="btn btn-light" (click)="deleteExpense(expense.id)">
+                        <i class="fa-solid fa-dumpster-fire fa-bounce ms-2" style="color: #ff6551;"></i>
+                    </button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

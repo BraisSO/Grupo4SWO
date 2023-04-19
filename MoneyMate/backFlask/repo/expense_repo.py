@@ -158,3 +158,9 @@ def modify_expense_repo(id, expense_altered):
         return expense_to_modify
     else:
         return False
+
+def delete_all_expenses_repo(user_id):
+    data = Expense.query.filter(Expense.user_id == user_id).all()
+    for expense in data:
+        db.session.delete(expense)
+    db.session.commit()

@@ -25,8 +25,12 @@ export class UserService {
     return this.http.put<User>(this.URL+"/update", user,{headers:this.httpHeaders}); // Flask
   }
 
-  delete():Observable<string>{
-    return this.http.delete<string>(this.URL+"/remove"); // Flask
+  delete():Observable<any>{
+    return this.http.delete<any>(this.URL+"/remove"); // Flask
+  }
+
+  getProfile():Observable<User>{
+    return this.http.get<User>(this.URL+"/my-profile"); // Flask
   }
 
 }

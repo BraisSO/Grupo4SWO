@@ -43,3 +43,8 @@ def delete_expense_route(id):
 @jwt_required()
 def update_expense_route(id):
     return update_expense(id)
+
+@expenses_routes.delete("/clear")
+@jwt_required()
+def delete_all_expenses_route():
+    return delete_all_expenses()

@@ -49,7 +49,7 @@ def get_id_from_token():
 def sign_in_controller():
     username = request.json["username"]
     email = request.json["email"]
-    first_name = request.json["firstName"]
+    first_name = request.json["first_name"]
     surname1 = request.json["surname1"]
     if "surname2" in request.json:
         surname2 = request.json["surname2"]
@@ -69,16 +69,21 @@ def login_controller():
         return create_token(user), 200
     else:
         return jsonify({"error" : "Unauthorized"}), 401
+
+def get_my_user():
+    id = get_id_from_token()
+    user = user_by_id(id)
+    return userSchema.jsonify(user)
     
 def delete_controller():
     id = get_id_from_token()
     user_deleted = delete_repo(id)
-    return jsonify({"id" : user_deleted.id})
+    return jsonify({"username" : user_deleted.username})
 
 def update_controller():
     username = request.json["username"]
     email = request.json["email"]
-    first_name = request.json["firstName"]
+    first_name = request.json["first_name"]
     surname1 = request.json["surname1"]
     if "surname2" in request.json:
         surname2 = request.json["surname2"]

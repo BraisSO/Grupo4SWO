@@ -1,27 +1,27 @@
-<div>
-    <app-nav></app-nav>
-    <div class="container">
-        <h1 class="text-center">Login</h1>
-        <form [formGroup]="form" (submit)="postLogin()">
-            <div class="row">
-                <div class="col-md-6 mb-3">
-                    <div class="form-group">
-                        <input class="form-control" type="text" name="username" placeholder="username" formControlName="username">
-                    </div>
-                </div>
-                <div class="col-md-6 mb-3">
-                    <div class="form-group">
-                        <input class="form-control" type="text" name="password" placeholder="user password" formControlName="password">
-                    </div>
-                </div>
-                <div class="col-md-12">
-                    <div class="form-group">
-                        <label for="save-btn">&nbsp;</label>
-                        <button class="btn btn-primary form-control" type="submit" id="save-btn">Login</button>
-                    </div>
+<div class="container">
+    <h1 class="text-center">Login</h1>
+    <form [formGroup]="form" (submit)="postLogin()">
+        <div class="row">
+            <div class="col-md-6 mb-3">
+                <div class="form-group">
+                    <input class="form-control" type="text" name="username" placeholder="username"
+                        formControlName="username">
                 </div>
             </div>
-        </form>
-        <a [routerLink]="['/sign-in']">I have not an account yet</a>
-    </div>
+            <div class="col-md-6 mb-3">
+                <div class="form-group">
+                    <input class="form-control" type="password" name="password" placeholder="user password"
+                        formControlName="password" autocomplete="on">
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="form-group">
+                    <label for="save-btn">&nbsp;</label>
+                    <button class="btn btn-primary form-control" type="submit" id="save-btn"
+                        style="background-color: '#3085d6';">Login</button>
+                </div>
+            </div>
+        </div>
+    </form>
+    <a [routerLink]="['/sign-in']">I have not an account yet</a>
 </div>

@@ -1,137 +1,123 @@
-<div>
-    <app-nav></app-nav>
-    <div class="container">
-        <h1 class="text-center">MoneyMate</h1>
-        <form (ngSubmit)="postOwnExpenses()">
-            <div class="row">
-                <div class="col-md-2">
-                    <div class="form-group">
-                        <label for="type">Type:</label>
-                        <select class="form-select" id="type" name="type" [(ngModel)]="expenseToSave.expense_type_id">
-                            <option *ngFor="let expenseType of expensesTypesList" value="{{expenseType.id}}">{{
-                                expenseType.name }}</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="form-group">
-                        <label for="name">Expense:</label>
-                        <input class="form-control" type="text" id="name" name="name" [(ngModel)]="expenseToSave.name">
-                    </div>
-                </div>
-                <div class="col-md-2">
-                    <div class="form-group">
-                        <label for="amount">Amount:</label>
-                        <input class="form-control" type="number" id="amount" name="amount" step="1" min="0"
-                            placeholder="0" [(ngModel)]="expenseToSave.amount">
-                    </div>
-                </div>
-                <div class="col-md-2">
-                    <div class="form-group">
-                        <label for="date">Date:</label>
-                        <input class="form-control" type="date" id="date" name="date" [(ngModel)]="expenseToSave.date">
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="form-group">
-                        <label for="save-btn">&nbsp;</label>
-                        <button class="btn btn-primary form-control" type="submit" id="save-btn">Save</button>
-                    </div>
+<div class="container">
+    <h1 class="text-center">MoneyMate</h1>
+    <form (ngSubmit)="postOwnExpenses()">
+        <div class="row">
+            <div class="col-md-2">
+                <div class="form-group">
+                    <label for="type">Type:</label>
+                    <select class="form-select" id="type" name="type" [(ngModel)]="expenseToSave.expense_type_id">
+                        <option *ngFor="let expenseType of expensesTypesList" value="{{expenseType.id}}">{{
+                            expenseType.name }}</option>
+                    </select>
                 </div>
             </div>
-        </form>
-        <h2>Expenses</h2>
-        <table class="table">
-            <thead class="thead-dark">
-                <tr>
-                    <th>Expense</th>
-                    <th>Type</th>
-                    <th>Amount</th>
-                    <th>Date</th>
-                    <th></th>
-                </tr>
-            </thead>
-            <tbody id="expense-list">
-                <tr *ngFor="let expense of expensesList; let i=index">
-                    <td>{{expense.name}}</td>
-                    <td>{{expensesTypesList[expense.expense_type_id - 1].name}}</td>
-                    <td>{{expense.amount}}</td>
-                    <td>{{expense.date}}</td>
-                    <td>
-                        <button type="button" class="btn btn-light" (click)="selectUpdate(expense)">
-                            <i class="fa-sharp fa-solid fa-shake fa-pen-to-square" style="color: #ffe4c4;"></i>
-                        </button>
-                        <button type="button" class="btn btn-light" (click)="deleteExpense(expense.id)">
-                            <i class="fa-solid fa-dumpster-fire fa-bounce ms-2" style="color: #ff6551;"></i>
-                        </button>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-        <div class="d-flex flex-row-reverse">
-            <div class="form-group">
-                <label for="delete-btn">&nbsp;</label>
-                <button (click)="clearOwnExpenses()" class="btn btn-danger mb-3" type="button"
-                    style="background-color: #ff6551;">Clear Expends</button>
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label for="name">Expense:</label>
+                    <input class="form-control" type="text" id="name" name="name" [(ngModel)]="expenseToSave.name">
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="form-group">
+                    <label for="amount">Amount:</label>
+                    <input class="form-control" type="number" id="amount" name="amount" step="1" min="0" placeholder="0"
+                        [(ngModel)]="expenseToSave.amount">
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="form-group">
+                    <label for="date">Date:</label>
+                    <input class="form-control" type="date" id="date" name="date" [(ngModel)]="expenseToSave.date">
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label for="save-btn">&nbsp;</label>
+                    <button class="btn btn-primary form-control" type="submit" id="save-btn"
+                        style="background-color: '#3085d6';">Save</button>
+                </div>
             </div>
         </div>
-        <h2>Filter</h2>
-        <form (ngSubmit)="getSameTypeExpenses()">
-            <div class="row">
-                <div class="col-md-3">
-                    <div class="form-group">
-                        <label for="type-filter">Type:</label>
-                        <select class="form-select" id="type-filter" name="type-filter" [(ngModel)]="typeFilter">
-                            <option *ngFor="let expenseType of expensesTypesList" value="{{expenseType.id}}">
-                                {{expenseType.name}}</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="form-group">
-                        <label for="filter-btn">&nbsp;</label>
-                        <button class="btn btn-primary form-control" type="submit" id="filter-btn">Filter</button>
-                    </div>
-                </div>
-            </div>
-        </form>
-        <h2>Find</h2>
-        <form (ngSubmit)="getSimilarExpenses()">
-            <div class="row">
-                <div class="col-md-3">
-                    <div class="form-group">
-                        <label for="nameToFind">Expense:</label>
-                        <input class="form-control" type="text" id="nameToFind" name="nameToFind"
-                            [(ngModel)]="nameToFind">
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="form-group">
-                        <label for="filter-btn">&nbsp;</label>
-                        <button class="btn btn-primary form-control" type="submit" id="find-btn">Find</button>
-                    </div>
-                </div>
-            </div>
-        </form>
-        <table *ngIf="filtrado" class="table">
-            <thead class="thead-dark">
-                <tr>
-                    <th>Expense</th>
-                    <th>Type</th>
-                    <th>Amount</th>
-                    <th>Date</th>
-                </tr>
-
-            </thead>
-            <tbody>
-                <tr *ngFor="let expense of filteredExpensesList; let i=index">
-                    <td>{{expense.name}}</td>
-                    <td>{{expensesTypesList[expense.expense_type_id - 1].name}}</td>
-                    <td>{{expense.amount}}</td>
-                    <td>{{expense.date}}</td>
-                </tr>
-            </tbody>
-        </table>
+    </form>
+    <h2>Expenses</h2>
+    <table class="table">
+        <thead class="thead-dark">
+            <tr>
+                <th>Expense</th>
+                <th>Type</th>
+                <th>Amount</th>
+                <th>Date</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody id="expense-list">
+            <tr *ngFor="let expense of expensesList; let i=index">
+                <td>{{expense.name}}</td>
+                <td>{{expensesTypesList[expense.expense_type_id - 1].name}}</td>
+                <td>{{expense.amount}}</td>
+                <td>{{expense.date}}</td>
+                <td>
+                    <button type="button" class="btn btn-light" (click)="selectUpdate(expense)">
+                        <i class="fa-sharp fa-solid fa-shake fa-pen-to-square" style="color: #ffe4c4;"></i>
+                    </button>
+                    <button type="button" class="btn btn-light" (click)="deleteExpense(expense.id)">
+                        <i class="fa-solid fa-dumpster-fire fa-bounce ms-2" style="color: #ff6551;"></i>
+                    </button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="d-flex flex-row-reverse">
+        <div class="form-group">
+            <label for="delete-btn">&nbsp;</label>
+            <button (click)="clearOwnExpenses()" class="btn btn-danger mb-3" type="button"
+                style="background-color: #ff6551;">Clear Expends</button>
+        </div>
     </div>
-</div>
+    <h2>Find</h2>
+    <form (ngSubmit)="getSimilarExpenses()">
+        <div class="row">
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label for="nameToFind">Expense:</label>
+                    <input class="form-control" type="text" id="nameToFind" name="nameToFind" [(ngModel)]="nameToFind">
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label for="filter-btn">&nbsp;</label>
+                    <button class="btn btn-primary form-control" type="submit" id="find-btn"
+                        style="background-color: '#3085d6';">Find</button>
+                </div>
+            </div>
+        </div>
+    </form>
+    <table *ngIf="filtrado" class="table">
+        <thead class="thead-dark">
+            <tr>
+                <th>Expense</th>
+                <th>Type</th>
+                <th>Amount</th>
+                <th>Date</th>
+                <th></th>
+            </tr>
 
+        </thead>
+        <tbody>
+            <tr *ngFor="let expense of filteredExpensesList; let i=index">
+                <td>{{expense.name}}</td>
+                <td>{{expensesTypesList[expense.expense_type_id - 1].name}}</td>
+                <td>{{expense.amount}}</td>
+                <td>{{expense.date}}</td>
+                <td>
+                    <button type="button" class="btn btn-light" (click)="selectUpdate(expense)">
+                        <i class="fa-sharp fa-solid fa-shake fa-pen-to-square" style="color: #ffe4c4;"></i>
+                    </button>
+                    <button type="button" class="btn btn-light" (click)="deleteExpense(expense.id)">
+                        <i class="fa-solid fa-dumpster-fire fa-bounce ms-2" style="color: #ff6551;"></i>
+                    </button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { User } from 'src/app/models/User';
 import { UserService } from 'src/app/service/user.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-login',
@@ -22,6 +23,7 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    sessionStorage.clear() // Borra todo lo almacenado en sessionStorage
   }
 
   postLogin() {
@@ -37,7 +39,22 @@ export class LoginComponent implements OnInit {
       },
       err => {
         console.error(err)
-
+        if (err.error = "Unauthorized"){
+          Swal.fire({
+            title: "This username does not exist on the database with that password.",
+            text: "Try it again!",
+            icon: 'error',
+            width: 600,
+            padding: '3em',
+            color: '#ff6551',
+            background: '#fff',
+            confirmButtonColor: '#ff6551',
+            backdrop: `
+            rgba(255,101,81,0.4)
+            `
+          })
+          this.form.reset()
+        }
       });
   }
 }

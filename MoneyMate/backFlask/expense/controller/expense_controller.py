@@ -46,9 +46,14 @@ def delete_expense(id):
     user_id = get_id_from_token()
     expense_deleted = remove_expense_repo(user_id, id)
     if expense_deleted is not False:
-        return jsonify({"message" : f"Success!! expense {expense_deleted.name} was removed"})
+        return jsonify({"message" : f"Success!! expense {expense_deleted.name} were removed"})
     else:
-        return jsonify({"message" : "Eror!! You haven't this expense"})
+        return jsonify({"message" : "Error!! You have not this expense."})
+
+def delete_all_expenses():
+    user_id = get_id_from_token()
+    delete_all_expenses_repo(user_id)
+    return jsonify({"message" : "Success!! All your expenses were removed."})
 
 def update_expense(id):
     name = request.json["name"]
@@ -61,4 +66,4 @@ def update_expense(id):
     if updated_expense is not False:
         return expenseSchema.jsonify(updated_expense)
     else:
-        return jsonify({"message" : "Eror!! You haven't expense"})
+        return jsonify({"message" : "Error!! You have not expense."})

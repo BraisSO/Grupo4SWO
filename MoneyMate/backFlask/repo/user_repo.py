@@ -6,6 +6,9 @@ def sign_in_repo(user):
     db.session.commit()
     return user
 
+def user_by_id(id):
+    return User.query.get(id)
+
 def login_repo(username):
     user = User.query.filter_by(username = username).one_or_none()
     return user

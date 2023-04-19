@@ -1,115 +1,28 @@
 import { Component, OnInit } from '@angular/core';
-import { OwnExpensesService } from 'src/app/service/own-expenses.service';
 import { Router } from '@angular/router';
 import { OwnExpenses } from 'src/app/models/OwnExpenses';
 import { ExpenseTypeService } from 'src/app/service/expense-type.service';
+import { OwnExpensesService } from 'src/app/service/own-expenses.service';
 import Swal from 'sweetalert2';
 
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css']
+  selector: 'app-expense-type',
+  templateUrl: './expense-type.component.html',
+  styleUrls: ['./expense-type.component.css']
 })
-export class HomeComponent implements OnInit {
+export class ExpenseTypeComponent implements OnInit {
+
 
   idToUpdate:number = 0;
+  typeFilter: number = 0;
   filtrado: boolean = false;
   nameToFind: string = ""
-  expenseToSave: OwnExpenses = new OwnExpenses(); //obxecto que usamos para inyectar os datos do formulario e pasalo a API
-  expensesList: any = []; //lista donde gardamos os datos da api
   filteredExpensesList: any = [];
   expensesTypesList: any = []
   constructor(private ownExpensesService: OwnExpensesService, private expenseTypeService: ExpenseTypeService, private router: Router) { }
 
   ngOnInit(): void {
     this.getExpensesTypes();
-    this.getOwnExpenses();
-  }
-
-  getOwnExpenses() {
-    this.ownExpensesService.getOwnExpenses().subscribe(res => {
-      this.expensesList = res;
-    },
-    err=>{
-      this.checkIfRequestIsUnauthorized(err);
-    })
-  }
-
-
-  postOwnExpenses() {
-    this.ownExpensesService.postOwnExpenses(this.expenseToSave).subscribe(
-      res =>{
-        Swal.fire({
-          title: `${res.name} expense was saved properly.`,
-          width: 600,
-          padding: '3em',
-          color: '#93e264',
-          background: '#fff',
-          confirmButtonColor: '#93e264',
-          backdrop: `
-          rgba(0,123,6,0.4)
-          `
-        })
-      },
-      err=>{
-        this.checkIfRequestIsUnauthorized(err);
-        Swal.fire({
-          title: 'Something where wrong, try it again.',
-          width: 600,
-          padding: '3em',
-          color: '#ff6551',
-          background: '#fff',
-          confirmButtonColor: '#ff6551',
-          backdrop: `
-          rgba(255,101,81,0.4)
-          `
-        })
-      }
-    );
-    this.resetPageView();
-  }
-
-  clearOwnExpenses() {
-    Swal.fire({
-      title: 'Do you really want to remove all expenses from your account?',
-      text: "You won't be able to revert this!",
-      icon: 'warning',
-      showCancelButton: true,
-      confirmButtonColor: '#3085d6',
-      cancelButtonColor: '#ff6551',
-      backdrop: `
-      rgba(255,101,81,0.4)
-      `,
-      confirmButtonText: 'Yes, remove all my expenses!'
-    }).then((result) => {
-      if (result.isConfirmed) {
-        this.ownExpensesService.clearOwnExpenses().subscribe(
-          res =>{
-            let message:string = res.message;
-            Swal.fire(
-              'All expenses removed!',
-              message,
-              'success',
-            )
-          },
-          err=>{
-            this.checkIfRequestIsUnauthorized(err);
-            Swal.fire({
-              title: 'Something where wrong, press the update button again.',
-              width: 600,
-              padding: '3em',
-              color: '#ff6551',
-              background: '#fff',
-              confirmButtonColor: '#ff6551',
-              backdrop: `
-              rgba(255,101,81,0.4)
-              `
-            })
-          }
-        );
-      }
-    });
-    location.reload();
   }
 
   getExpensesTypes() {
@@ -121,17 +34,18 @@ export class HomeComponent implements OnInit {
       })
   }
 
-
-  getSimilarExpenses() {
-    this.ownExpensesService.findSimilarExpenses(this.nameToFind).subscribe(res => {
+  getSameTypeExpenses() {
+    this.ownExpensesService.findByType(this.typeFilter).subscribe(res => {
       this.filteredExpensesList = res;
-    },
-    err=>{
-      this.checkIfRequestIsUnauthorized(err);
-    })
+      })
     this.filtrado = true;
   }
 
+  postNewExpensesType(){
+    // Quedeime aquí
+  }
+
+  //Methods from expenses
   selectUpdate(expense:OwnExpenses){
     const options = this.expensesTypesList.map((expenseType: { id: number; name: any; }) => `
       <option value="${expenseType.id}" ${expenseType.id === expense.expense_type_id ? 'selected' : ''}>${expenseType.name}</option>
@@ -186,6 +100,7 @@ export class HomeComponent implements OnInit {
         return { expense }
       }
     }).then((result) => {
+      this.getSameTypeExpenses()
       let expenseChanged:OwnExpenses = result.value!.expense
       this.ownExpensesService.update(expenseChanged).subscribe(
         res =>{
@@ -216,7 +131,6 @@ export class HomeComponent implements OnInit {
           })
         }
       );
-      this.resetPageView();
     })
     
   }
@@ -224,7 +138,7 @@ export class HomeComponent implements OnInit {
   deleteExpense(id:number){
     this.ownExpensesService.deleteById(id).subscribe(
       res =>{
-        console.log(res.message)
+        this.getSameTypeExpenses()
         Swal.fire({
           title: `${res.message}`,
           width: 600,
@@ -250,20 +164,11 @@ export class HomeComponent implements OnInit {
         })
       }
     );
-    this.resetPageView()
   }
 
   checkIfRequestIsUnauthorized(err:any):void{
     if (err.error = "Unauthorized"){
       this.router.navigate(['/login']) //Redirixe ao login
     }
-  }
-
-  resetPageView(){
-    this.getExpensesTypes();
-    this.getOwnExpenses();
-    this.expenseToSave.amount = 0
-    this.expenseToSave.date = ""
-    this.expenseToSave.name = ""
   }
 }

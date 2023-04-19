@@ -1,25 +1,38 @@
-<div>
-    <app-nav></app-nav>
-    <div class="container">
-        <h1 class="text-center">Do you want to leave us?</h1>
-        <form [formGroup]="form" (submit)="logout()">
-            <div class="row">
-                <!-- Redirixe ao home -->
-                <div class="col-md-6">
-                    <a [routerLink]="['/']">
-                        <div class="form-group">
-                            <label for="save-btn">&nbsp;</label>
-                            <button class="btn btn-primary form-control" type="button" id="save-btn">Maybe later</button>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-md-6">
+<div class="container">
+    <h1 class="text-center">Do you want to leave us?</h1>
+    <form [formGroup]="form" (submit)="logout()">
+        <div class="row">
+            <!-- Redirixe ao home -->
+            <div class="col-md-6">
+                <a [routerLink]="['/']">
                     <div class="form-group">
-                        <label for="save-btn">&nbsp;</label>
-                        <button class="btn btn-danger form-control" type="submit" id="logout-btn">Logout</button>
+                        <label for="exit-btn">&nbsp;</label>
+                        <button class="btn btn-primary form-control" type="button" id="exit-btn"
+                            style="background-color: '#3085d6';">Maybe later</button>
                     </div>
+                </a>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="logout-btn">&nbsp;</label>
+                    <button class="btn btn-danger form-control" type="submit" id="logout-btn"
+                        style="background-color: #ff6551;">Logout</button>
                 </div>
             </div>
-        </form>
+        </div>
+    </form>
+</div>
+<div class="col-md-3">
+    <div class="form-group">
+        <label for="update-btn">&nbsp;</label>
+        <button class="btn btn-dark form-control" type="button" id="update-btn" (click)="userUpdate()">Update
+            profile</button>
+    </div>
+</div>
+<div class="col-md-1">
+    <div class="form-group">
+        <label for="delete-acount-btn">&nbsp;</label>
+        <button class="btn btn-danger form-control" type="button" id="delete-acount-btn"
+            style="background-color: #ff6551;" (click)="deleteAccount()">Delete account</button>
     </div>
 </div>
