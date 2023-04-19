@@ -15,6 +15,7 @@ import { TokenjwtInterceptor } from './interceptors/tokenjwt.interceptor';
 import { TokenjwtGuard } from './guards/tokenjwt.guard';
 import { LogoutComponent } from './components/logout/logout.component';
 import { ExpenseTypeComponent } from './components/expense-type/expense-type.component';
+import { ExpenseComponent } from './components/expense/expense.component';
 
 const rutas: Routes = [
   { path: '', component: HomeComponent, canActivate: [TokenjwtGuard] },
@@ -23,6 +24,7 @@ const rutas: Routes = [
   { path:'login', component: LoginComponent },
   { path:'logout', component: LogoutComponent, canActivate: [TokenjwtGuard] },
   { path:'expense-type', component: ExpenseTypeComponent, canActivate: [TokenjwtGuard] },
+  { path:'expense', component: ExpenseComponent, canActivate: [TokenjwtGuard] },
 ]
 
 @NgModule({
@@ -34,7 +36,8 @@ const rutas: Routes = [
     LoginComponent,
     SignInComponent,
     LogoutComponent,
-    ExpenseTypeComponent
+    ExpenseTypeComponent,
+    ExpenseComponent
   ],
   imports: [
     BrowserModule,

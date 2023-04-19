@@ -1,5 +1,6 @@
 <div class="container">
-    <h1 class="text-center">Do you want to leave us?</h1>
+    <h1>Money Mate</h1>
+    <h2>Do you want to leave us?</h2>
     <form [formGroup]="form" (submit)="logout()">
         <div class="row">
             <!-- Redirixe ao home -->
@@ -22,17 +23,21 @@
         </div>
     </form>
 </div>
-<div class="col-md-3">
-    <div class="form-group">
-        <label for="update-btn">&nbsp;</label>
-        <button class="btn btn-dark form-control" type="button" id="update-btn" (click)="userUpdate()">Update
-            profile</button>
+<div class="d-flex justify-content-center">
+    <div class="col-md-3">
+        <div class="form-group">
+            <label for="update-btn">&nbsp;</label>
+            <button class="btn btn-dark form-control" type="button" id="update-btn" (click)="userUpdate()">Update
+                profile</button>
+        </div>
     </div>
 </div>
-<div class="col-md-1">
-    <div class="form-group">
-        <label for="delete-acount-btn">&nbsp;</label>
-        <button class="btn btn-danger form-control" type="button" id="delete-acount-btn"
-            style="background-color: #ff6551;" (click)="deleteAccount()">Delete account</button>
+<div class="d-flex align-items-end flex-column mt-5 me-1">
+    <div class="col-md-1 mt-5">
+        <div class="form-group mt-5">
+            <label for="delete-acount-btn">&nbsp;</label>
+            <button class="btn btn-danger form-control" type="button" id="delete-acount-btn"
+                style="background-color: #ff6551;" (click)="deleteAccount()">Delete account</button>
+        </div>
     </div>
 </div>

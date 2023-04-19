@@ -29,12 +29,12 @@ export class ExpenseTypeService {
     return this.http.post<ExpenseType>(this.URL+"/save", expenseType,{headers:this.httpHeaders}); // Flask
   }
 
-  update(id:number, expenseType:ExpenseType):Observable<ExpenseType>{
-    return this.http.put<ExpenseType>(this.URL+"/update/"+id, expenseType,{headers:this.httpHeaders}); // Flask
+  update(expenseType:ExpenseType):Observable<ExpenseType>{
+    return this.http.put<ExpenseType>(this.URL+"/update/"+expenseType.id, expenseType,{headers:this.httpHeaders}); // Flask
   }
 
-  remove(id:number):Observable<String>{
-    return this.http.delete<string>(this.URL+"/remove/"+id); // Flask
+  remove(id:number):Observable<any>{
+    return this.http.delete<any>(this.URL+"/remove/"+id); // Flask
   }
 
 }

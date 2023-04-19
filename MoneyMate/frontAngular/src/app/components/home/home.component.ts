@@ -13,11 +13,7 @@ import Swal from 'sweetalert2';
 export class HomeComponent implements OnInit {
 
   idToUpdate:number = 0;
-  filtrado: boolean = false;
-  nameToFind: string = ""
-  expenseToSave: OwnExpenses = new OwnExpenses(); //obxecto que usamos para inyectar os datos do formulario e pasalo a API
   expensesList: any = []; //lista donde gardamos os datos da api
-  filteredExpensesList: any = [];
   expensesTypesList: any = []
   constructor(private ownExpensesService: OwnExpensesService, private expenseTypeService: ExpenseTypeService, private router: Router) { }
 
@@ -33,40 +29,6 @@ export class HomeComponent implements OnInit {
     err=>{
       this.checkIfRequestIsUnauthorized(err);
     })
-  }
-
-
-  postOwnExpenses() {
-    this.ownExpensesService.postOwnExpenses(this.expenseToSave).subscribe(
-      res =>{
-        Swal.fire({
-          title: `${res.name} expense was saved properly.`,
-          width: 600,
-          padding: '3em',
-          color: '#93e264',
-          background: '#fff',
-          confirmButtonColor: '#93e264',
-          backdrop: `
-          rgba(0,123,6,0.4)
-          `
-        })
-      },
-      err=>{
-        this.checkIfRequestIsUnauthorized(err);
-        Swal.fire({
-          title: 'Something where wrong, try it again.',
-          width: 600,
-          padding: '3em',
-          color: '#ff6551',
-          background: '#fff',
-          confirmButtonColor: '#ff6551',
-          backdrop: `
-          rgba(255,101,81,0.4)
-          `
-        })
-      }
-    );
-    this.resetPageView();
   }
 
   clearOwnExpenses() {
@@ -119,17 +81,6 @@ export class HomeComponent implements OnInit {
       err =>{
         this.checkIfRequestIsUnauthorized(err);
       })
-  }
-
-
-  getSimilarExpenses() {
-    this.ownExpensesService.findSimilarExpenses(this.nameToFind).subscribe(res => {
-      this.filteredExpensesList = res;
-    },
-    err=>{
-      this.checkIfRequestIsUnauthorized(err);
-    })
-    this.filtrado = true;
   }
 
   selectUpdate(expense:OwnExpenses){
@@ -262,8 +213,5 @@ export class HomeComponent implements OnInit {
   resetPageView(){
     this.getExpensesTypes();
     this.getOwnExpenses();
-    this.expenseToSave.amount = 0
-    this.expenseToSave.date = ""
-    this.expenseToSave.name = ""
   }
 }

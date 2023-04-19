@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ExpenseType } from 'src/app/models/ExpenseType';
 import { OwnExpenses } from 'src/app/models/OwnExpenses';
 import { ExpenseTypeService } from 'src/app/service/expense-type.service';
 import { OwnExpensesService } from 'src/app/service/own-expenses.service';
@@ -14,15 +15,16 @@ export class ExpenseTypeComponent implements OnInit {
 
 
   idToUpdate:number = 0;
-  typeFilter: number = 0;
+  typeFilter:number = 0;
   filtrado: boolean = false;
-  nameToFind: string = ""
+  expenseTypeToSave:ExpenseType = new ExpenseType()
   filteredExpensesList: any = [];
   expensesTypesList: any = []
   constructor(private ownExpensesService: OwnExpensesService, private expenseTypeService: ExpenseTypeService, private router: Router) { }
 
   ngOnInit(): void {
     this.getExpensesTypes();
+    this.expenseTypeToSave.id =0;
   }
 
   getExpensesTypes() {
@@ -37,16 +39,151 @@ export class ExpenseTypeComponent implements OnInit {
   getSameTypeExpenses() {
     this.ownExpensesService.findByType(this.typeFilter).subscribe(res => {
       this.filteredExpensesList = res;
+      },
+      err=>{
+        this.checkIfRequestIsUnauthorized(err);
       })
     this.filtrado = true;
   }
 
   postNewExpensesType(){
-    // Quedeime aquí
+    this.expenseTypeService.save(this.expenseTypeToSave).subscribe(
+      res =>{
+        this.resetPage()
+        Swal.fire({
+          title: `Expense type: ${res.name}  was saved properly.`,
+          width: 600,
+          padding: '3em',
+          color: '#93e264',
+          background: '#fff',
+          confirmButtonColor: '#93e264',
+          backdrop: `
+          rgba(0,123,6,0.4)
+          `
+        })
+      },
+      err=>{
+        this.checkIfRequestIsUnauthorized(err);
+        Swal.fire({
+          title: 'Something where wrong, try it again.',
+          width: 600,
+          padding: '3em',
+          color: '#ff6551',
+          background: '#fff',
+          confirmButtonColor: '#ff6551',
+          backdrop: `
+          rgba(255,101,81,0.4)
+          `
+        })
+      }
+    );
+    this.resetPage()
+  }
+
+  updateExpenseType(expenseType:ExpenseType){
+    Swal.fire({
+      title: `Updating ${expenseType.name}`,
+      html: `
+      <div class="col-md-3">
+          <div class="form-group">
+              <label for="name">Expense type:</label>
+              <input class="swal2-input" type="text" id="name" name="name" value="${expenseType.name}">
+          </div>
+      </div>
+      `,
+      confirmButtonText: 'update',
+      confirmButtonColor: '#3085d6',
+      focusConfirm: false,
+      preConfirm: () => {
+          const name:HTMLInputElement = Swal.getPopup()!.querySelector('#name')!
+
+          expenseType.name = name.value;
+
+        if (!expenseType.name ) {
+          Swal.showValidationMessage(`Please complete the field`)
+        }
+        return { expenseType }
+      }
+    }).then((result) => {
+      let expenseTypeChanged:ExpenseType = result.value!.expenseType
+      this.expenseTypeService.update(expenseTypeChanged).subscribe(
+        res =>{
+          this.resetPage()
+          Swal.fire({
+            title: `expense type ${res.name} was updated properly.`,
+            width: 600,
+            padding: '3em',
+            color: '#93e264',
+            background: '#fff',
+            confirmButtonColor: '#93e264',
+            backdrop: `
+            rgba(0,123,6,0.4)
+            `
+          })
+        },
+        err=>{
+          this.checkIfRequestIsUnauthorized(err);
+          Swal.fire({
+            title: 'Something where wrong, try it again.',
+            width: 600,
+            padding: '3em',
+            color: '#ff6551',
+            background: '#fff',
+            confirmButtonColor: '#ff6551',
+            backdrop: `
+            rgba(255,101,81,0.4)
+            `
+          })
+        }
+      );
+    })
+  }
+
+  deleteExpenseType(id:number){
+    this.expenseTypeService.remove(id).subscribe(
+      res =>{
+        this.resetPage()
+        Swal.fire({
+          title: `${res.message}`,
+          width: 600,
+          padding: '3em',
+          color: '#93e264',
+          background: '#fff',
+          backdrop: `
+          rgba(0,123,6,0.4)
+          `
+        })
+      },
+      err=>{
+        this.checkIfRequestIsUnauthorized(err);
+        Swal.fire({
+          title: 'Something where wrong, try it again.',
+          width: 600,
+          padding: '3em',
+          color: '#ff6551',
+          background: '#fff',
+          backdrop: `
+          rgba(255,101,81,0.4)
+          `
+        })
+      }
+    );
+    this.resetPage()
+  }
+
+  checkIfRequestIsUnauthorized(err:any):void{
+    if (err.error = "Unauthorized"){
+      this.router.navigate(['/login']) //Redirixe ao login
+    }
+  }
+    
+  resetPage():void{
+    this.getExpensesTypes();
+    this.expenseTypeToSave.name = ""
   }
 
   //Methods from expenses
-  selectUpdate(expense:OwnExpenses){
+  updateExpense(expense:OwnExpenses){
     const options = this.expensesTypesList.map((expenseType: { id: number; name: any; }) => `
       <option value="${expenseType.id}" ${expenseType.id === expense.expense_type_id ? 'selected' : ''}>${expenseType.name}</option>
     `).join('');
@@ -100,10 +237,10 @@ export class ExpenseTypeComponent implements OnInit {
         return { expense }
       }
     }).then((result) => {
-      this.getSameTypeExpenses()
       let expenseChanged:OwnExpenses = result.value!.expense
       this.ownExpensesService.update(expenseChanged).subscribe(
         res =>{
+          this.resetPage()
           Swal.fire({
             title: `${res.name} expense was updated properly.`,
             width: 600,
@@ -131,14 +268,14 @@ export class ExpenseTypeComponent implements OnInit {
           })
         }
       );
+      
     })
-    
   }
 
   deleteExpense(id:number){
     this.ownExpensesService.deleteById(id).subscribe(
       res =>{
-        this.getSameTypeExpenses()
+        this.resetPage()
         Swal.fire({
           title: `${res.message}`,
           width: 600,
@@ -166,9 +303,4 @@ export class ExpenseTypeComponent implements OnInit {
     );
   }
 
-  checkIfRequestIsUnauthorized(err:any):void{
-    if (err.error = "Unauthorized"){
-      this.router.navigate(['/login']) //Redirixe ao login
-    }
-  }
 }
