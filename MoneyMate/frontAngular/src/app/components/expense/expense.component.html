@@ -70,10 +70,10 @@
 
         </thead>
         <tbody>
-            <tr *ngFor="let expense of filteredExpensesList; let i=index">
+            <tr *ngFor="let expense of filteredExpensesList | paginate: {itemsPerPage: expensesPerPage, currentPage: currentPage}">
                 <td>{{expense.name}}</td>
                 <td>
-                    <div *ngFor="let expenseType of expensesTypesList; let i=index">
+                    <div *ngFor="let expenseType of expensesTypesList">
                         <div *ngIf="expenseType.id === expense.expense_type_id">
                             {{expenseType.name}}
                         </div>
@@ -92,4 +92,5 @@
             </tr>
         </tbody>
     </table>
+    <pagination-controls (pageChange)="currentPage = $event"></pagination-controls>
 </div>

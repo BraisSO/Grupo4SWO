@@ -52,7 +52,7 @@
 
         </thead>
         <tbody>
-            <tr *ngFor="let expense of filteredExpensesList; let i=index">
+            <tr *ngFor="let expense of filteredExpensesList | paginate: {itemsPerPage: expensesPerPage, currentPage: currentExpensesPage}">
                 <td>{{expense.name}}</td>
                 <td>{{expense.amount}}</td>
                 <td>{{expense.date}}</td>
@@ -66,6 +66,7 @@
                 </td>
             </tr>
         </tbody>
+        <pagination-controls (pageChange)="currentExpensesPage = $event"></pagination-controls>
     </table>
     <h2>Modify & remove</h2>
     <div class="d-flex justify-content-center">
@@ -78,7 +79,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let expenseType of expensesTypesList;">
+                <tr *ngFor="let expenseType of expensesTypesList | paginate: {itemsPerPage: expensesTypesPerPage, currentPage: currentExpensesTypesPage}">
                     <td>{{expenseType.name}}</td>
                     <td>
                         <button type="button" class="btn btn-light" (click)="updateExpenseType(expenseType)">
@@ -92,6 +93,7 @@
                     </td>
                 </tr>
             </tbody>
-        </table>
+        <pagination-controls (pageChange)="currentExpensesTypesPage = $event"></pagination-controls>
+    </table>
     </div>
 </div>

@@ -16,6 +16,7 @@ import { TokenjwtGuard } from './guards/tokenjwt.guard';
 import { LogoutComponent } from './components/logout/logout.component';
 import { ExpenseTypeComponent } from './components/expense-type/expense-type.component';
 import { ExpenseComponent } from './components/expense/expense.component';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 const rutas: Routes = [
   { path: '', component: HomeComponent, canActivate: [TokenjwtGuard] },
@@ -45,7 +46,8 @@ const rutas: Routes = [
     HttpClientModule,
     FormsModule,
     CommonModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgxPaginationModule
   ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass:TokenjwtInterceptor, multi:true}

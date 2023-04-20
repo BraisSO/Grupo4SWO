@@ -12,6 +12,8 @@ import Swal from 'sweetalert2';
 })
 export class HomeComponent implements OnInit {
 
+  currentPage:number = 1;
+  expensesPerPage:number = 12;
   idToUpdate:number = 0;
   expensesList: any = []; //lista donde gardamos os datos da api
   expensesTypesList: any = []

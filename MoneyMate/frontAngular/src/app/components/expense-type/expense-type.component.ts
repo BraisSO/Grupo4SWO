@@ -13,7 +13,10 @@ import Swal from 'sweetalert2';
 })
 export class ExpenseTypeComponent implements OnInit {
 
-
+  currentExpensesPage:number = 1;
+  expensesPerPage:number = 12;
+  currentExpensesTypesPage:number = 1;
+  expensesTypesPerPage:number = 12;
   idToUpdate:number = 0;
   typeFilter:number = 0;
   filtrado: boolean = false;

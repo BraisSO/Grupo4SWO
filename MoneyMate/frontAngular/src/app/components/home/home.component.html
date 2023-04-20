@@ -12,10 +12,10 @@
             </tr>
         </thead>
         <tbody id="expense-list">
-            <tr *ngFor="let expense of expensesList; let i=index">
+            <tr *ngFor="let expense of expensesList | paginate: {itemsPerPage: expensesPerPage, currentPage: currentPage}">
                 <td>{{expense.name}}</td>
                 <td>
-                    <div *ngFor="let expenseType of expensesTypesList; let i=index">
+                    <div *ngFor="let expenseType of expensesTypesList">
                         <div *ngIf="expenseType.id === expense.expense_type_id">
                             {{expenseType.name}}
                         </div>
@@ -41,4 +41,5 @@
                 style="background-color: #ff6551;">Clear Expends</button>
         </div>
     </div>
+    <pagination-controls (pageChange)="currentPage = $event"></pagination-controls>
 </div>
