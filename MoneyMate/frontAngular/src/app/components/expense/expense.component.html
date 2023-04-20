@@ -1,11 +1,11 @@
 <div class="container">
     <h1>Money Mate</h1>
-    <h2>Save expense</h2>
+    <h2>{{ 'saveNewExpense' | translate }}</h2>
     <form (ngSubmit)="postOwnExpenses()">
         <div class="row">
             <div class="col-md-2">
                 <div class="form-group">
-                    <label for="type">Type:</label>
+                    <label for="type">{{ 'type' | translate }}:</label>
                     <select class="form-select" id="type" name="type" [(ngModel)]="expenseToSave.expense_type_id">
                         <option *ngFor="let expenseType of expensesTypesList" value="{{expenseType.id}}">{{
                             expenseType.name }}</option>
@@ -14,20 +14,20 @@
             </div>
             <div class="col-md-3">
                 <div class="form-group">
-                    <label for="name">Expense:</label>
+                    <label for="name">{{ 'expense' | translate }}:</label>
                     <input class="form-control" type="text" id="name" name="name" [(ngModel)]="expenseToSave.name">
                 </div>
             </div>
             <div class="col-md-2">
                 <div class="form-group">
-                    <label for="amount">Amount:</label>
+                    <label for="amount">{{ 'amount' | translate }}:</label>
                     <input class="form-control" type="number" id="amount" name="amount" step="1" min="0" placeholder="0"
                         [(ngModel)]="expenseToSave.amount">
                 </div>
             </div>
             <div class="col-md-2">
                 <div class="form-group">
-                    <label for="date">Date:</label>
+                    <label for="date">{{ 'date' | translate }}:</label>
                     <input class="form-control" type="date" id="date" name="date" [(ngModel)]="expenseToSave.date">
                 </div>
             </div>
@@ -35,17 +35,17 @@
                 <div class="form-group">
                     <label for="save-btn">&nbsp;</label>
                     <button class="btn btn-primary form-control" type="submit" id="save-btn"
-                        style="background-color: '#3085d6';">Save</button>
+                        style="background-color: '#3085d6';">{{ 'save' | translate }}</button>
                 </div>
             </div>
         </div>
     </form>
-    <h2>Find expenses</h2>
+    <h2>{{ 'findExpenses' | translate }}</h2>
     <form (ngSubmit)="getSimilarExpenses()">
         <div class="row">
             <div class="col-md-3">
                 <div class="form-group">
-                    <label for="nameToFind">Expense:</label>
+                    <label for="nameToFind">{{ 'expense' | translate }}:</label>
                     <input class="form-control" type="text" id="nameToFind" name="nameToFind" [(ngModel)]="nameToFind">
                 </div>
             </div>
@@ -53,7 +53,7 @@
                 <div class="form-group">
                     <label for="filter-btn">&nbsp;</label>
                     <button class="btn btn-primary form-control" type="submit" id="find-btn"
-                        style="background-color: '#3085d6';">Find</button>
+                        style="background-color: '#3085d6';">{{ 'find' | translate }}</button>
                 </div>
             </div>
         </div>
@@ -61,10 +61,10 @@
     <table *ngIf="filtrado" class="table">
         <thead class="thead-dark">
             <tr>
-                <th>Expense</th>
-                <th>Type</th>
-                <th>Amount</th>
-                <th>Date</th>
+                <th>{{ 'expenses' | translate }}</th>
+                <th>{{ 'expensesTypes' | translate }}</th>
+                <th>{{ 'amount' | translate }}</th>
+                <th>{{ 'date' | translate }}</th>
                 <th></th>
             </tr>
 

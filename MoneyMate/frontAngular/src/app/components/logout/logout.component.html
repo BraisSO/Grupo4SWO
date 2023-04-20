@@ -1,6 +1,6 @@
 <div class="container">
     <h1>Money Mate</h1>
-    <h2>Do you want to leave us?</h2>
+    <h2>{{ 'leaveUs' | translate }}</h2>
     <form [formGroup]="form" (submit)="logout()">
         <div class="row">
             <!-- Redirixe ao home -->
@@ -9,7 +9,7 @@
                     <div class="form-group">
                         <label for="exit-btn">&nbsp;</label>
                         <button class="btn btn-primary form-control" type="button" id="exit-btn"
-                            style="background-color: '#3085d6';">Maybe later</button>
+                            style="background-color: '#3085d6';">{{ 'maybeLater' | translate }}</button>
                     </div>
                 </a>
             </div>
@@ -17,7 +17,7 @@
                 <div class="form-group">
                     <label for="logout-btn">&nbsp;</label>
                     <button class="btn btn-danger form-control" type="submit" id="logout-btn"
-                        style="background-color: #ff6551;">Logout</button>
+                        style="background-color: #ff6551;">{{ 'logout' | translate }}</button>
                 </div>
             </div>
         </div>
@@ -27,8 +27,7 @@
     <div class="col-md-3">
         <div class="form-group">
             <label for="update-btn">&nbsp;</label>
-            <button class="btn btn-dark form-control" type="button" id="update-btn" (click)="userUpdate()">Update
-                profile</button>
+            <button class="btn btn-dark form-control" type="button" id="update-btn" (click)="userUpdate()">{{ 'update Profile' | translate }}</button>
         </div>
     </div>
 </div>
@@ -37,7 +36,7 @@
         <div class="form-group mt-5">
             <label for="delete-acount-btn">&nbsp;</label>
             <button class="btn btn-danger form-control" type="button" id="delete-acount-btn"
-                style="background-color: #ff6551;" (click)="deleteAccount()">Delete account</button>
+                style="background-color: #ff6551;" (click)="deleteAccount()">{{ 'deleteAccount' | translate }}</button>
         </div>
     </div>
 </div>

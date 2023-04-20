@@ -39,7 +39,7 @@ export class LoginComponent implements OnInit {
       },
       err => {
         console.error(err)
-        if (err.error = "Unauthorized"){
+        if (err.error =="Unauthorized"){
           Swal.fire({
             title: "This username does not exist on the database with that password.",
             text: "Try it again!",

@@ -1,13 +1,13 @@
 <div class="container">
     <h1>MoneyMate</h1>
-    <h2>All my expenses</h2>
+    <h2>{{ 'home' | translate }}</h2>
     <table class="table">
         <thead class="thead-dark">
             <tr>
-                <th>Expense</th>
-                <th>Type</th>
-                <th>Amount</th>
-                <th>Date</th>
+                <th>{{ 'expenses' | translate }}</th>
+                <th>{{ 'expensesTypes' | translate }}</th>
+                <th>{{ 'amount' | translate }}</th>
+                <th>{{ 'date' | translate }}</th>
                 <th></th>
             </tr>
         </thead>
@@ -38,7 +38,7 @@
         <div class="form-group">
             <label for="delete-btn">&nbsp;</label>
             <button (click)="clearOwnExpenses()" class="btn btn-danger mb-3" type="button"
-                style="background-color: #ff6551;">Clear Expends</button>
+                style="background-color: #ff6551;">{{ 'clearExpends' | translate }}</button>
         </div>
     </div>
     <pagination-controls (pageChange)="currentPage = $event"></pagination-controls>

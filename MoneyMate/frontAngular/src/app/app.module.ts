@@ -4,7 +4,7 @@ import { CommonModule } from '@angular/common'
 
 import { AppComponent } from './app.component';
 import { Routes, RouterModule } from '@angular/router';
-import { HTTP_INTERCEPTORS, HttpClientModule } from "@angular/common/http";
+import { HTTP_INTERCEPTORS, HttpClient, HttpClientModule } from "@angular/common/http";
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HomeComponent } from './components/home/home.component';
 import { ExtCurrenciesComponent } from './components/ext-currencies/ext-currencies.component';
@@ -17,6 +17,10 @@ import { LogoutComponent } from './components/logout/logout.component';
 import { ExpenseTypeComponent } from './components/expense-type/expense-type.component';
 import { ExpenseComponent } from './components/expense/expense.component';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { SwitchLangComponent } from './components/switch-lang/switch-lang.component';
+import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+
 
 const rutas: Routes = [
   { path: '', component: HomeComponent, canActivate: [TokenjwtGuard] },
@@ -38,7 +42,8 @@ const rutas: Routes = [
     SignInComponent,
     LogoutComponent,
     ExpenseTypeComponent,
-    ExpenseComponent
+    ExpenseComponent,
+    SwitchLangComponent,
   ],
   imports: [
     BrowserModule,
@@ -47,7 +52,15 @@ const rutas: Routes = [
     FormsModule,
     CommonModule,
     ReactiveFormsModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    HttpClientModule,
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: httpTranslateLoader,
+        deps: [HttpClient]
+      }
+    })
   ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass:TokenjwtInterceptor, multi:true}
@@ -55,3 +68,7 @@ const rutas: Routes = [
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+
+export function httpTranslateLoader(http: HttpClient) {
+  return new TranslateHttpLoader(http);
+}

@@ -1,17 +1,17 @@
 <div class="container">
     <h1>Money Mate</h1>
-    <h2>Login</h2>
+    <h2>{{ 'login' | translate }}</h2>
     <form [formGroup]="form" (submit)="postLogin()">
         <div class="row">
             <div class="col-md-6 mb-3">
                 <div class="form-group">
-                    <input class="form-control" type="text" name="username" placeholder="username"
+                    <input class="form-control" type="text" name="username" placeholder="{{ 'username' | translate }}"
                         formControlName="username">
                 </div>
             </div>
             <div class="col-md-6 mb-3">
                 <div class="form-group">
-                    <input class="form-control" type="password" name="password" placeholder="user password"
+                    <input class="form-control" type="password" name="password" placeholder="{{ 'password' | translate }}"
                         formControlName="password" autocomplete="on">
                 </div>
             </div>
@@ -19,12 +19,12 @@
                 <div class="form-group">
                     <label for="save-btn">&nbsp;</label>
                     <button class="btn btn-primary form-control" type="submit" id="save-btn"
-                        style="background-color: '#3085d6';">Login</button>
+                        style="background-color: '#3085d6';">{{ 'login' | translate }}</button>
                 </div>
             </div>
         </div>
     </form>
     <div class="d-flex justify-content-end">
-        <a [routerLink]="['/sign-in']">I have not an account yet</a>
+        <a [routerLink]="['/sign-in']">{{ 'haventAccount' | translate }}</a>
     </div>
 </div>

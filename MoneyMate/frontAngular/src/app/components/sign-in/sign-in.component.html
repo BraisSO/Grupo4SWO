@@ -1,49 +1,49 @@
 <div class="container">
     <h1>Money Mate</h1>
-    <h2>Sing in</h2>
+    <h2>{{ 'signIn' | translate }}</h2>
     <form (ngSubmit)="postSignIn()">
         <div class="row">
             <div class="col-md-6 mb-3">
                 <div class="form-group">
-                    <input class="form-control" type="text" id="username" name="username" placeholder="username"
+                    <input class="form-control" type="text" id="username" name="username" placeholder="{{ 'username' | translate }}"
                         [(ngModel)]="user.username">
                 </div>
             </div>
             <div class="col-md-6 mb-3">
                 <div class="form-group">
-                    <input class="form-control" type="text" id="email" name="email" placeholder="email"
+                    <input class="form-control" type="text" id="email" name="email" placeholder="{{ 'email' | translate }}"
                         [(ngModel)]="user.email">
                 </div>
             </div>
             <div class="col-md-6 mb-3">
                 <div class="form-group">
-                    <input class="form-control" type="text" id="firstName" name="firstName" placeholder="first name"
+                    <input class="form-control" type="text" id="firstName" name="firstName" placeholder="{{ 'firstName' | translate }}"
                         [(ngModel)]="user.first_name">
                 </div>
             </div>
             <div class="col-md-6 mb-3">
                 <div class="form-group">
-                    <input class="form-control" type="text" id="surname1" name="surname1" placeholder="surname"
+                    <input class="form-control" type="text" id="surname1" name="surname1" placeholder="{{ 'surname' | translate }}"
                         [(ngModel)]="user.surname1">
                 </div>
             </div>
             <div class="col-md-6 mb-3">
                 <div class="form-group">
                     <input class="form-control" type="text" id="surname2" name="surname2"
-                        placeholder="2nd surname (if apply)" [(ngModel)]="user.surname2">
+                        placeholder="{{ 'surname2' | translate }}" [(ngModel)]="user.surname2">
                 </div>
             </div>
             <div class="col-md-6 mb-3">
                 <div class="form-group">
                     <input class="form-control" type="password" id="password" name="password"
-                        placeholder="user password" [(ngModel)]="user.password">
+                        placeholder="{{ 'password' | translate }}" [(ngModel)]="user.password">
                 </div>
             </div>
             <div class="col-md-12">
                 <div class="form-group">
                     <label for="save-btn">&nbsp;</label>
                     <button class="btn btn-primary form-control" type="submit" id="save-btn"
-                        style="background-color: '#3085d6';">Sign in</button>
+                        style="background-color: '#3085d6';">{{ 'signIn' | translate }}</button>
                 </div>
             </div>
         </div>

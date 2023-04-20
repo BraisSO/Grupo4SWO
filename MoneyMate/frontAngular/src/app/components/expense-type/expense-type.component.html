@@ -1,12 +1,12 @@
 <div class="container">
     <h1>MoneyMate</h1>
-    <h2>Expenses types</h2>
+    <h2>{{ 'expensesTypes' | translate }}</h2>
     <form (ngSubmit)="getSameTypeExpenses()">
         <div class="row">
             <div class="col-md-3"></div>
             <div class="col-md-3">
                 <div class="form-group">
-                    <label for="type-filter">filter:</label>
+                    <label for="type-filter">{{ 'filter' | translate }}:</label>
                     <select class="form-select" id="type-filter" name="type-filter" [(ngModel)]="typeFilter">
                         <option *ngFor="let expenseType of expensesTypesList" value="{{expenseType.id}}">
                             {{expenseType.name}}
@@ -18,7 +18,7 @@
                 <div class="form-group">
                     <label for="filter-btn">&nbsp;</label>
                     <button class="btn btn-primary form-control" type="submit" id="filter-btn"
-                        style="background-color: '#3085d6';">Filter</button>
+                        style="background-color: '#3085d6';">{{ 'filter' | translate }}</button>
                 </div>
             </div>
         </div>
@@ -28,7 +28,7 @@
             <div class="col-md-3"></div>
             <div class="col-md-3">
                 <div class="form-group">
-                    <input class="form-control" id="name" name="name" placeholder="New expense type"
+                    <input class="form-control" id="name" name="name" placeholder="{{ 'newExpenseType' | translate }}"
                         [(ngModel)]="expenseTypeToSave.name">
                 </div>
             </div>
@@ -44,10 +44,9 @@
 
         <thead class="thead-dark">
             <tr>
-                <th>Expense</th>
-                <th>Amount</th>
-                <th>Date</th>
-                <th></th>
+                <th>{{ 'expenses' | translate }}</th>
+                <th>{{ 'amount' | translate }}</th>
+                <th>{{ 'date' | translate }}</th>
             </tr>
 
         </thead>
@@ -68,14 +67,14 @@
         </tbody>
         <pagination-controls (pageChange)="currentExpensesPage = $event"></pagination-controls>
     </table>
-    <h2>Modify & remove</h2>
+    <h2>{{ 'modify&Remove' | translate }}</h2>
     <div class="d-flex justify-content-center">
         <table>
             <thead>
                 <tr>
-                    <th>Expense type</th>
-                    <th>edit</th>
-                    <th>delete</th>
+                    <th>{{ 'expensesTypes' | translate }}</th>
+                    <th>{{ 'edit' | translate }}</th>
+                    <th>{{ 'delete' | translate }}</th>
                 </tr>
             </thead>
             <tbody>

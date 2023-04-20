@@ -175,7 +175,7 @@ export class ExpenseTypeComponent implements OnInit {
   }
 
   checkIfRequestIsUnauthorized(err:any):void{
-    if (err.error = "Unauthorized"){
+    if (err.error =="Unauthorized"){
       this.router.navigate(['/login']) //Redirixe ao login
     }
   }

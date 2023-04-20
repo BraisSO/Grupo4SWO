@@ -1,9 +1,9 @@
 <h3>{{extCurrencies.date}}</h3>
 <table>
     <tr>
-        <th>Currency Abbreviation</th>
-        <th>Currency Name</th>
-        <th>Eur Value</th>
+        <th>{{ 'currencyAbbreviation' | translate }}</th>
+        <th>{{ 'currencyName' | translate }}</th>
+        <th>{{ 'eurConversion' | translate }}</th>
     </tr>
     <tr *ngFor="let key of keys">
         <td>{{key}}</td>
