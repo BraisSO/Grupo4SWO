@@ -12,7 +12,8 @@ import { ExtCurrencyNames } from 'src/app/models/ExtCurrencyNames';
 })
 export class ExtCurrenciesComponent implements OnInit {
 
-
+  currentPage:number = 1;
+  currenciesPerPage:number = 12;
   extCurrencies:ExtMoney= new ExtMoney();
   extCurrenciesNames:any= new ExtCurrencyNames();
   extCurrenciesArray:any=[];

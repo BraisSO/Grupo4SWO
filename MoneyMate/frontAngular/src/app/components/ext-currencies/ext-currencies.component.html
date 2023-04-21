@@ -5,10 +5,11 @@
         <th>{{ 'currencyName' | translate }}</th>
         <th>{{ 'eurConversion' | translate }}</th>
     </tr>
-    <tr *ngFor="let key of keys">
+    <tr *ngFor="let key of keys | paginate: {itemsPerPage: currenciesPerPage, currentPage: currentPage}">
         <td>{{key}}</td>
         <td *ngIf="extCurrenciesNames[key]!='';else elseBlock">{{extCurrenciesNames[key]}}</td>
         <ng-template #elseBlock>-</ng-template>
         <td>{{extCurrencies.eur[key]}}</td>
     </tr>
 </table>
+<pagination-controls class="ms-3" (pageChange)="currentPage = $event"></pagination-controls>
