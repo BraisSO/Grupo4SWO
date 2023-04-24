@@ -1,6 +1,7 @@
 {
     "amount": "Amount",
     "clearExpends": "Clear expends",
+    "completeFields":"Please complete the fields",
     "currencyAbbreviation":"Currency Abbreviation",
     "currencyName": "Currency name",
     "date": "Date",
@@ -26,6 +27,9 @@
     "maybeLater": "Maybe later",
     "newExpenseType": "New expense type",
     "password": "User password",
+    "properlyUpdated": "expense was updated properly.",
+    "removeAllAdvertice": "You won't be able to revert this!",
+    "removeAllQuestion": "Do you really want to remove all expenses from your account?",
     "save": "Save",
     "saveNewExpense": "Save new expense",
     "signIn": "Sign in",
@@ -33,5 +37,8 @@
     "surname2": "2nd surname (if apply)",
     "type": "Type",
     "updateProfile": "Update profile",
-    "username": "Username"
+    "username": "Username",
+    "removeAllButton": "Yes, remove all my expenses!",
+    "removeAllSuccess": "All expenses were removed!",
+    "wrongTryAgain": "Something was wrong, press the button again."
 }

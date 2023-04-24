@@ -1,6 +1,7 @@
 {
     "amount": "Cantidade",
     "clearExpends": "Valeirar gastos",
+    "completeFields": "Completa os campos por favor",
     "currencyAbbreviation":"Abreviaturas de moedas",
     "currencyName": "Nome da moeda",
     "date": "Data",
@@ -26,6 +27,11 @@
     "maybeLater": "Pode que despois",
     "newExpenseType": "Novo tipo de gasto",
     "password": "Contrasinal da conta",
+    "properlyUpdated": "foi actualizado correctamente.",
+    "removeAllAdvertice": "¡Esta acción non ten volta atrás!",
+    "removeAllButton": "Si, ¡Elimina todolos meus gastos",
+    "removeAllQuestion": "¿Estás seguro que queres borrar tódolos gastos da túa conta?",
+    "removeAllSuccess": "¡Todolos gastos foron borrados!",
     "save": "Gardar",
     "saveNewExpense": "Gardar un novo gasto",
     "signIn": "Crear una cuenta",
@@ -33,5 +39,6 @@
     "surname2": "Segundo apelido (Se tes)",
     "type": "Tipo",
     "updateProfile": "Actualizar perfil",
-    "username": "Nome de usuario"
+    "username": "Nome de usuario",
+    "wrongTryAgain": "Algo foi mal, volve pulsalo botón."
 }
