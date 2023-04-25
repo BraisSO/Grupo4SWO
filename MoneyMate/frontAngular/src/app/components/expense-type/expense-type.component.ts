@@ -52,11 +52,15 @@ export class ExpenseTypeComponent implements OnInit {
   }
 
   postNewExpensesType(){
+    let expenseType = this.translate.instant("expenseType");
+    let savedProperly = this.translate.instant("savedProperly");
+    let wrongTryAgain = this.translate.instant("wrongTryAgain");
+
     this.expenseTypeService.save(this.expenseTypeToSave).subscribe(
       res =>{
         this.resetPage()
         Swal.fire({
-          title: `Expense type: ${res.name}  was saved properly.`,
+          title: `${expenseType}: ${res.name}  ${savedProperly}`,
           width: 600,
           padding: '3em',
           color: '#93e264',
@@ -70,7 +74,7 @@ export class ExpenseTypeComponent implements OnInit {
       err=>{
         ExpenseCrud.checkIfRequestIsUnauthorized(err, this.router);
         Swal.fire({
-          title: 'Something where wrong, try it again.',
+          title: wrongTryAgain,
           width: 600,
           padding: '3em',
           color: '#ff6551',
@@ -86,17 +90,24 @@ export class ExpenseTypeComponent implements OnInit {
   }
 
   updateExpenseType(expenseType:ExpenseType){
+    let expenseTypeText = this.translate.instant("expenseType");
+    let completeFields = this.translate.instant("completeFields");
+    let wrongTryAgain = this.translate.instant("wrongTryAgain");
+    let update = this.translate.instant("update")
+    let updating = this.translate.instant("updating");
+    let expenseTypeProperlyUpdated = this.translate.instant("expenseTypeProperlyUpdated");
+
     Swal.fire({
-      title: `Updating ${expenseType.name}`,
+      title: `${updating} ${expenseType.name}`,
       html: `
       <div class="col-md-3">
           <div class="form-group">
-              <label for="name">Expense type:</label>
+              <label for="name">${expenseTypeText}:</label>
               <input class="swal2-input" type="text" id="name" name="name" value="${expenseType.name}">
           </div>
       </div>
       `,
-      confirmButtonText: 'update',
+      confirmButtonText: update,
       confirmButtonColor: '#3085d6',
       focusConfirm: false,
       preConfirm: () => {
@@ -105,7 +116,7 @@ export class ExpenseTypeComponent implements OnInit {
           expenseType.name = name.value;
 
         if (!expenseType.name ) {
-          Swal.showValidationMessage(`Please complete the field`)
+          Swal.showValidationMessage(completeFields)
         }
         return { expenseType }
       }
@@ -115,7 +126,7 @@ export class ExpenseTypeComponent implements OnInit {
         res =>{
           this.resetPage()
           Swal.fire({
-            title: `expense type ${res.name} was updated properly.`,
+            title: `${expenseTypeText} ${res.name} ${expenseTypeProperlyUpdated}`,
             width: 600,
             padding: '3em',
             color: '#93e264',
@@ -129,7 +140,7 @@ export class ExpenseTypeComponent implements OnInit {
         err=>{
           ExpenseCrud.checkIfRequestIsUnauthorized(err, this.router);
           Swal.fire({
-            title: 'Something where wrong, try it again.',
+            title: wrongTryAgain,
             width: 600,
             padding: '3em',
             color: '#ff6551',
@@ -145,6 +156,7 @@ export class ExpenseTypeComponent implements OnInit {
   }
 
   deleteExpenseType(id:number){
+    let wrongTryAgain = this.translate.instant("wrongTryAgain");
     this.expenseTypeService.remove(id).subscribe(
       res =>{
         this.resetPage()
@@ -162,7 +174,7 @@ export class ExpenseTypeComponent implements OnInit {
       err=>{
         ExpenseCrud.checkIfRequestIsUnauthorized(err, this.router);
         Swal.fire({
-          title: 'Something where wrong, try it again.',
+          title: wrongTryAgain,
           width: 600,
           padding: '3em',
           color: '#ff6551',

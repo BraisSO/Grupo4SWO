@@ -31,10 +31,14 @@ export class ExpenseComponent implements OnInit {
 
 
   postOwnExpenses() {
+    let saveExpense1 = this.translate.instant("saveExpense1")
+    let saveExpense2 = this.translate.instant("saveExpense2")
+    let wrongTryAgain = this.translate.instant("wrongTryAgain")
+
     this.ownExpensesService.postOwnExpenses(this.expenseToSave).subscribe(
       res => {
         Swal.fire({
-          title: `${res.name} expense was saved properly.`,
+          title: `${saveExpense1}${res.name} ${saveExpense2}`,
           width: 600,
           padding: '3em',
           color: '#93e264',
@@ -48,7 +52,7 @@ export class ExpenseComponent implements OnInit {
       err => {
         ExpenseCrud.checkIfRequestIsUnauthorized(err, this.router);
         Swal.fire({
-          title: 'Something where wrong, try it again.',
+          title: wrongTryAgain,
           width: 600,
           padding: '3em',
           color: '#ff6551',

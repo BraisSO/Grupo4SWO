@@ -14,13 +14,15 @@ export class ExpenseCrud{
         let completeFields:string = translate.instant('completeFields');
         let properlyUpdated:string = translate.instant('properlyUpdated');
         let wrongTryAgain:string = translate.instant("wrongTryAgain");
+        let updating:string = translate.instant("updating");
+        let update:string = translate.instant("update");
         
         const options = expensesTypesList.map((expenseType: { id: number; name: any; }) => `
           <option value="${expenseType.id}" ${expenseType.id === expense.expense_type_id ? 'selected' : ''}>${expenseType.name}</option>
         `).join('');
     
         Swal.fire({
-          title: `Updating ${expense.name}`,
+          title: `${updating} ${expense.name}`,
           html: `
           <div class="col-md-2">
               <div class="form-group">
@@ -38,7 +40,7 @@ export class ExpenseCrud{
           </div>
           <div class="col-md-2">
               <div class="form-group">
-                  <label for="amount">´${amount}:</label>
+                  <label for="amount">${amount}:</label>
                   <input class="swal2-input" type="number" id="amount" name="amount" step="1" min="0" value="${expense.amount}">
               </div>
           </div>
@@ -49,7 +51,7 @@ export class ExpenseCrud{
               </div>
           </div>
           `,
-          confirmButtonText: 'update',
+          confirmButtonText: update,
           confirmButtonColor: '#3085d6',
           focusConfirm: false,
           preConfirm: () => {
